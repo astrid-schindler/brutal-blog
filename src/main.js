@@ -13,13 +13,14 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faBug } from  '@fortawesome/free-solid-svg-icons'
 import { faVirus } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faVideo } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faBug)
 library.add(faVirus)
 library.add(faEnvelope)
-
+library.add(faVideo)
 
 createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)
