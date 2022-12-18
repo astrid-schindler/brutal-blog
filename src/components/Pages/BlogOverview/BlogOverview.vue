@@ -1,5 +1,4 @@
 <template>
-  <div class="intheback font-mono font-light">
     <div class="pb-12 text-6xl font-medium content-center text-center ">Blog</div>
 
     <ListedEntry></ListedEntry>
@@ -11,7 +10,6 @@
       <a href="#" class="px-3 hover:text-pink-700 hover:bg-pink-200">3</a>
       <a href="#" class="px-3 hover:text-pink-700 hover:bg-pink-200" >..</a>
     </div>
-  </div>
 </template>
 
 <script>

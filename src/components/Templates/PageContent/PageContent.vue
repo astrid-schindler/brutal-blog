@@ -1,12 +1,13 @@
 <template>
-  <BlogOverview></BlogOverview>
+  <div class="intheback font-mono font-light">
+
+  </div>
 </template>
 
 <script>
-import BlogOverview from "@/components/Pages/BlogOverview/BlogOverview";
 export default {
   name: "PageContent",
-  components: {BlogOverview},
+  components: {},
 }
 </script>
 
