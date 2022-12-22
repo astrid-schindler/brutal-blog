@@ -1,6 +1,5 @@
 <template>
-    <div class="pb-12 text-6xl font-medium content-center text-center ">Blog</div>
-
+    <TheHeading the-headline="Blog"></TheHeading>
     <ListedEntry></ListedEntry>
 
     <div class="text-center text-stone-500">
@@ -14,9 +13,10 @@
 
 <script>
 import ListedEntry from "@/components/Molecules/ListedEntry/ListedEntry";
+import TheHeading from "@/components/Atoms/TheHeading/TheHeading";
 export default {
   name: "BlogOverview",
-  components: {ListedEntry}
+  components: {TheHeading, ListedEntry}
 }
 </script>
 

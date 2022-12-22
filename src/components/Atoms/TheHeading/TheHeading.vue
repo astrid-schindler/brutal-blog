@@ -1,10 +1,13 @@
 <template>
-  <div class="pb-16 text-6xl font-medium content-center text-center ">Contact</div>
+  <div class="animate__animated animate__fadeInDown pb-12 text-6xl font-medium text-center">{{theHeadline}}</div>
 </template>
 
 <script>
 export default {
-  name: "TheHeading"
+  name: "TheHeading",
+  props:{
+    theHeadline : String,
+  }
 }
 </script>
 

@@ -1,13 +1,20 @@
 <template>
-  <button class="bg-gray-300 hover:bg-gray-400 text-pink-600 font-bold py-2 px-4 inline-flex items-center">
-    <font-awesome-icon class="px-2" icon="fa-solid fa-video" />
-    <span>Start Video-Chat</span>
+  <button class="bg-rose-500 hover:bg-rose-600 text-white font-light py-2 px-4 inline-flex items-center animate__animated hover:animate__headShake">
+    <font-awesome-icon class="px-2" icon="fa-solid {{buttonIcon}}" />
+    <span>{{buttonText}}</span>
   </button>
 </template>
 
 <script>
 export default {
-  name: "TheButton"
+  name: "TheButton",
+  props: {
+    bgColor : String,
+    fontColor : String,
+    buttonText : String,
+    buttonIcon : String,
+    buttonLink: String,
+  }
 }
 </script>
 
