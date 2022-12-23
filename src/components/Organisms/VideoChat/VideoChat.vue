@@ -5,7 +5,7 @@
     <video class="video-player" id="user-1" autoplay playsinline></video>
     <video class="video-player" id="user-2" autoplay playsinline></video>
   </div>
-  <div class="p-12 grid place-items-center"><TheButton id="start-call" onclick="cameraOn()" bg-color="pink" font-color="grey" button-text="Start Video Chat" class="p-5"></TheButton></div>
+  <div class="p-12 grid place-items-center"><TheButton id="start-call" bg-color="pink" font-color="grey" button-text="Start Video Chat" class="p-5"></TheButton></div>
 </template>
 
 <script>
@@ -23,8 +23,16 @@ let cameraOn = async () => {
   console.log ("Camera on!")
 }
 
-//let starter = Document.getElementById('start-call')
+function buttonClicked(){
+  console.log("Button clicked");
+}
 
+window.onload=function(){
+  let btn = document.getElementById("start-call");
+  btn.addEventListener("click", buttonClicked, true);
+}
+
+//document.getElementById("start-call").addEventListener("click", cameraOn);
 
 export default {
   name: "VideoChat",

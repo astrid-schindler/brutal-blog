@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Design is not a detail",
+    "author": "John Watson",
+    "date": "12-18-2022",
+    "category": "Crime",
+    "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "picture": "https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg"
+  },
+  {
+    "id": 2,
+    "title": "Something is Red",
+    "author": "John Watson",
+    "date": "12-18-2022",
+    "category": "Crime",
+    "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "picture": "https://images.pexels.com/photos/910213/pexels-photo-910213.jpeg"
+  },
+  {
+    "id": 3,
+    "title": "The Taste of the Bittersweet",
+    "author": "John Watson",
+    "date": "12-18-2022",
+    "category": "Crime",
+    "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "picture": "https://images.pexels.com/photos/937766/pexels-photo-937766.jpeg"
+  },
+  {
+    "id": 4,
+    "title": "Case studies: The Power of Deduction",
+    "author": "John Watson",
+    "date": "12-18-2022",
+    "category": "Crime",
+    "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "picture": "https://images.pexels.com/photos/2886015/pexels-photo-2886015.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "Her Name was Number 5",
+    "author": "John Watson",
+    "date": "12-18-2022",
+    "category": "Crime",
+    "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "picture": "https://images.pexels.com/photos/380330/pexels-photo-380330.jpeg"
+  }
+]
