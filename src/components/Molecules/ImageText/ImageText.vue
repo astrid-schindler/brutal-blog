@@ -1,7 +1,7 @@
 <template>
   <TheHeading :the-headline="pageHeadline"></TheHeading>
   <div v-show="pageType === 'blog'" class="p-4 italic text-sm font-light text-stone-500 content-center text-center ">{{blogDate}} | {{blogAuthor}} | {{blogCategory}}</div>
-  <img class="p-6" src="https://images.pexels.com/photos/1057816/pexels-photo-1057816.jpeg" alt="Neon-Pink-Urban">
+  <img class="py-6" :src="`${pagePicture}`" alt="Neon-Pink-Urban">
   <div class="p-12">
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </p>
@@ -32,6 +32,7 @@ export default {
   extends: TheHeading,
   props: {
     pageHeadline: String,
+    pagePicture: String,
     blogDate : String,
     blogAuthor : String,
     blogCategory : String,

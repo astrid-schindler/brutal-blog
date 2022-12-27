@@ -4,14 +4,14 @@
       <!-- LOGO -->
       <a href="#" class="flex items-center">
         <div class="logo animate__animated animate__fadeInDown text-rose-500"><font-awesome-icon icon="fa-solid fa-i-cursor" /></div>
-        <span class="animate__animated animate__fadeInDown self-center text-xl font-light whitespace-nowrap">Mystery Blog</span>
+        <span class="animate__animated animate__fadeInDown self-center text-xl font-light whitespace-nowrap tracking-widest">Mystery Blog</span>
       </a>
-      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
+      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 z-30 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
       </button>
       <!-- MENU LIST -->
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <div class="hidden w-full md:block md:w-auto tracking-widest" id="navbar-default">
         <ul class="flex flex-col p-4 mt-4 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
           <li>
             <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/">Home</router-link>
@@ -24,6 +24,12 @@
           </li>
           <li>
             <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/contact">Contact</router-link>
+          </li>
+          <li>
+            <p>|</p>
+          </li>
+          <li>
+            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/login">Login</router-link>
           </li>
         </ul>
       </div>
@@ -38,5 +44,5 @@ export default {
 </script>
 
 <style scoped>
-
+@import "NavigationBar.css";
 </style>

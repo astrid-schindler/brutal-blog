@@ -1,6 +1,6 @@
 <template>
 <the-heading the-headline="Contact"></the-heading>
-  <div class="pt-10 grid grid-cols-2 gap-48">
+  <div class="pt-10 grid grid-cols-2 gap-x-48 gap-y-16 max-sm:grid-cols-1">
     <div>
       <p class="pb-6">If you have a specific interest to cooperate with us, then please write an email or send us a beautiful letter.</p>
       <br>
@@ -34,14 +34,15 @@
       <div class="grid md:grid-cols-2 md:gap-6">
       </div>
       <the-button button-icon="fa-envelope" button-text="Submit!"></the-button>
-    </form></div>
+    </form>
+    </div>
   </div>
 
   <div class="pt-10">
     <p>
       We are always looking for special cases. You can try to get a video call with my colleague S.H. But please understand that we are mostly very busy.
     </p>
-    <div class="pt-4 content-center"><the-button onclick="location.href='#/video-call'" button-text="Get a video call!"></the-button></div>
+    <div class="pt-4 content-center"><the-button onclick="location.href='/video-call'" button-text="Get a video call!"></the-button></div>
   </div>
 </template>
 

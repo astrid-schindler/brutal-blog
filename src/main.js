@@ -21,6 +21,7 @@ import { faTwitter} from "@fortawesome/free-brands-svg-icons"
 import { faFacebook} from "@fortawesome/free-brands-svg-icons"
 import { faBehance} from "@fortawesome/free-brands-svg-icons"
 import { faICursor} from "@fortawesome/free-solid-svg-icons"
+import 'flowbite';
 
 // Ich würde mich sehr freuen dieses Icon zu bekommen!!!!!!!!
 
