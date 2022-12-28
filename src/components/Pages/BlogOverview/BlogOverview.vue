@@ -64,7 +64,7 @@ export default {
   },
   name: "BlogOverview",
   components: {TheHeading,},
-  methods: trim()
+  methods: trim(),
 }
 </script>
 

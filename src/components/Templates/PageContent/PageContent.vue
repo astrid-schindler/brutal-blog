@@ -1,5 +1,5 @@
 <template>
-  <div class="contentSize font-mono font-light">
+  <div class="contentSize font-mono font-light ">
     <router-view/>
   </div>
 </template>

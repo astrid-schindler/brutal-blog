@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col min-h-screen ">
-  <NavigationBar></NavigationBar>
-  <PageContent></PageContent>
-  <FooterCredits></FooterCredits>
+      <NavigationBar></NavigationBar>
+      <PageContent></PageContent>
+      <FooterCredits></FooterCredits>
   </div>
 </template>
 <script>

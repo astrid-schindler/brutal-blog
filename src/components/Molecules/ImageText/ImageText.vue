@@ -2,7 +2,7 @@
   <TheHeading :the-headline="pageHeadline"></TheHeading>
   <div v-show="pageType === 'blog'" class="p-4 italic text-sm font-light text-stone-500 content-center text-center ">{{blogDate}} | {{blogAuthor}} | {{blogCategory}}</div>
   <img class="py-6" :src="`${pagePicture}`" alt="Neon-Pink-Urban">
-  <div class="p-12">
+  <div class="p-12 sm:p-3.5 md:p-6" >
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </p>
     <p class="pt-6">
