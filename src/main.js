@@ -1,4 +1,6 @@
-import { createApp } from 'vue'
+import { createApp, provide, h } from 'vue'
+import { DefaultApolloClient } from '@vue/apollo-composable'
+import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import App from './App.vue'
 
 // STYLES
@@ -39,6 +41,21 @@ library.add(faFacebook)
 library.add(faBehance)
 library.add(faICursor)
 
-createApp(App).use(router)
-    .component('font-awesome-icon', FontAwesomeIcon)
-    .mount('#app')
+const cache = new InMemoryCache()
+
+const apolloClient = new ApolloClient({
+    cache,
+    uri: '<https://rickandmortyapi.com/graphql>',
+})
+
+const app = createApp({
+    setup () {
+        provide(DefaultApolloClient, apolloClient)
+    },
+
+    render: () => h(App),
+})
+
+app.use(router)
+app.component('font-awesome-icon', FontAwesomeIcon)
+app.mount('#app')

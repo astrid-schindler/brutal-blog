@@ -26,6 +26,9 @@
             <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/contact">Contact</router-link>
           </li>
           <li>
+            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/bloggql">Gql</router-link>
+          </li>
+          <li>
             <p>|</p>
           </li>
           <li>

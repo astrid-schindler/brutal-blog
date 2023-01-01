@@ -9,7 +9,10 @@ import ImageText from "@/components/Molecules/ImageText/ImageText";
 
 export default {
   name: "AboutPage",
-  components: {ImageText}
+  components: {ImageText},
+  mounted() {
+    console.log('Hallo')
+  },
 }
 </script>
 

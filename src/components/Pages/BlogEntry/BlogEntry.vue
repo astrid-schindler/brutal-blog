@@ -6,6 +6,7 @@
                :blog-category="post.category"
                :blog-date="post.date"
                :page-picture="post.picture"
+               :page-content="post.content"
     />
   </div>
 </template>
