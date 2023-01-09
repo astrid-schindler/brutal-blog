@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { useQuery } from 'villus';
 import ImageText from "@/components/Molecules/ImageText/ImageText";
+import { useQuery } from 'villus';
 import { useRoute } from 'vue-router';
 
 export default {
