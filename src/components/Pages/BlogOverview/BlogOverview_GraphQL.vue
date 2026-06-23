@@ -1,34 +1,38 @@
 <template>
-  <TheHeading the-headline="Blog"></TheHeading>
-  <div v-if="data">
+  <TheHeading data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine" the-headline="Projects"></TheHeading>
+  <div v-if="data" class="content-center items-center w-3/4">
       <div v-for="post in data.allPosts" :key="post.id">
-        <div v-if="data.allPosts.indexOf(post) % 2 == 0" class="py-16 grid grid-cols-3 gap-4 max-sm:grid-cols-1 hover:text-rose-500" id="post-left">
+        <div v-if="data.allPosts.indexOf(post) % 2 == 0" class="py-16 grid grid-cols-3 gap-4 max-sm:grid-cols-1 hover:text-stone-300 border-black px-16" id="post-left">
           <div class="">
             <router-link :to="'/blogpost/' + post.id">
-              <img class="" :src="`${post.imageUrl}`" alt="Blogpost Picture">
+              <img :src="`${post.imageUrl}`" alt="Blogpost Picture">
             </router-link>
           </div>
           <div class="col-span-2 ">
             <router-link :to="'/blogpost/' + post.id">
-              <div class="text-3xl font-medium content-center">{{post.title}}</div>
+              <div class="text-3xl font-medium uppercase tracking-widest content-center">{{post.title}}</div>
             </router-link>
-            <div class="py-4 italic text-sm font-light text-stone-500 content-center">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
-            <p class="contentText text-black line-clamp-4 text-justify" :id="post.id">
+            <div class="py-4 italic text-xs font-light text-white content-center">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
+            <p class="contentText text-white text-xs line-clamp-3 text-justify" :id="post.id">
               {{post.content}}
             </p>
-            <router-link class="text-rose-500 pl-6 hover:font-medium" :to="'/blogpost/' + post.id">> Read more</router-link>
+            <router-link class="text-stone-500 font-medium uppercase tracking-widest" :to="'/blogpost/' + post.id">Read more</router-link>
           </div>
         </div>
-        <div v-else class="py-16 grid grid-cols-3 gap-4 place-items-end max-sm:grid-cols-1 hover:text-rose-500" id="post-left">
+        <div v-else class="py-16 grid grid-cols-3 gap-4 place-items-end max-sm:grid-cols-1 hover:text-stone-300 border-black px-16" id="post-left">
           <div class="col-span-2">
             <router-link :to="'/blogpost/' + post.id">
-              <div class="text-3xl font-medium content-center text-right">{{post.title}}</div>
+              <div class="text-3xl font-medium uppercase tracking-widest content-center text-right">{{post.title}}</div>
             </router-link>
-            <div class="py-4 italic text-sm font-light text-stone-500 content-center text-right">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
-            <p class="text-right text-black line-clamp-4 text-justify">
+            <div class="py-4 italic text-xs font-light text-white content-center text-right">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
+            <p class="text-right text-white text-xs line-clamp-3 text-justify">
               {{post.content}}
             </p>
-            <router-link class="text-rose-500 hover:font-medium" :to="'/blogpost/' + post.id"> > Read more </router-link>
+            <router-link :to="'/blogpost/' + post.id">
+              <p class="text-stone-500 content-center uppercase tracking-widest text-right font-medium">Read more</p>
+            </router-link>
           </div>
           <div class="">
             <router-link :to="'/blogpost/' + post.id">
@@ -41,10 +45,10 @@
 
   <div class="text-center text-stone-500">
     <p class="pb-5">Page:</p>
-    <a href="#" class="px-3 hover:text-rose-500 hover:bg-rose-200">1</a>
-    <a href="#" class="px-3 hover:text-rose-500 hover:bg-rose-200">2</a>
-    <a href="#" class="px-3 hover:text-rose-500 hover:bg-rose-200">3</a>
-    <a href="#" class="px-3 hover:text-rose-500 hover:bg-rose-200" >..</a>
+    <a href="#" class="px-3 hover:text-stone-500 hover:bg-stone-200">1</a>
+    <a href="#" class="px-3 hover:text-stone-500 hover:bg-stone-200">2</a>
+    <a href="#" class="px-3 hover:text-stone-500 hover:bg-stone-200">3</a>
+    <a href="#" class="px-3 hover:text-stone-500 hover:bg-stone-200" >..</a>
   </div>
 </template>
 

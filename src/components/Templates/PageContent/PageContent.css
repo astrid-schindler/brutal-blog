@@ -1,21 +1,4 @@
-.contentSize{
-    margin: auto;
-    width: 65%;
-    padding: 50px;
-}
-
-@media (max-width: 576px) {
-    .contentSize{
-        margin: auto;
-        width: 90%;
-        padding: 20px;
-    }
-}
-
-@media (max-width: 992px) {
-    .contentSize{
-        margin: auto;
-        width: 90%;
-        padding: 20px;
-    }
+.contentSize {
+    width: 760px;
+    height: auto;
 }

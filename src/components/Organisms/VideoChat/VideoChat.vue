@@ -23,15 +23,6 @@ let cameraOn = async () => {
   console.log ("Camera on!")
 }
 
-function buttonClicked(){
-  console.log("Button clicked");
-}
-
-window.onload=function(){
-  let btn = document.getElementById("start-call");
-  btn.addEventListener("click", buttonClicked, true);
-}
-
 export default {
   name: "VideoChat",
   components: {TheButton, TheHeading},

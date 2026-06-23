@@ -1,17 +1,20 @@
 <template>
-  <div class="contentSize font-mono font-light ">
+  <main class="font-mono font-extralight">
     <router-view/>
-  </div>
+    <NavigationBar></NavigationBar>
+  </main>
 </template>
 
 <script>
-
+import NavigationBar from "@/components/Organisms/NavigationBar/NavigationBar.vue";
 export default {
   name: "PageContent",
-  components: {},
+  components: {NavigationBar},
 }
 </script>
 
 <style scoped>
+
 @import 'PageContent.css';
+
 </style>

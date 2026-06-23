@@ -1,25 +1,29 @@
 <template>
-  <div class="flex flex-col min-h-screen ">
-      <NavigationBar></NavigationBar>
+  <div class="text-stone-700">
       <PageContent></PageContent>
-      <FooterCredits></FooterCredits>
   </div>
 </template>
 <script>
-// STYLES
 import { useClient } from 'villus';
 import 'animate.css';
 // COMPONENTS
-import NavigationBar from "@/components/Organisms/NavigationBar/NavigationBar";
 import PageContent from "@/components/Templates/PageContent/PageContent";
-import FooterCredits from "@/components/Organisms/FooterCredits/FooterCredits";
 
 export default {
-  components: {FooterCredits, PageContent, NavigationBar},
+  components: { PageContent },
   setup() {
     useClient({
       url: 'http://localhost:8000/graphql',
     });
   },
+  methods: {
+    myFunction() {
+      const element = document.getElementById("box");
+      element.scrollIntoView({behavior: "smooth"});
+    }
+  },
 }
 </script>
+<style scoped>
+
+</style>

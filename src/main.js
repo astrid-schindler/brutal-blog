@@ -1,9 +1,10 @@
 import { createApp, h } from 'vue'
 import App from './App.vue'
-
 // STYLES
 import 'animate.css'
 import './index.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -23,7 +24,6 @@ import { faBehance} from "@fortawesome/free-brands-svg-icons"
 import { faICursor} from "@fortawesome/free-solid-svg-icons"
 import 'flowbite';
 
-// Ich würde mich sehr freuen dieses Icon zu bekommen!!!!!!!!
 
 // ROUTER
 import router from './router'
@@ -42,6 +42,9 @@ library.add(faICursor)
 
 const app = createApp({
     render: () => h(App),
+    mounted() {
+        AOS.init()
+    },
 })
 
 app.use(router)
