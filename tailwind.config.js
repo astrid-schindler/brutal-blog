@@ -4,7 +4,10 @@ module.exports = {
     extend:
         {
           fontFamily: {
-            'cormorant': ['Cormorant', 'serif']
+              'cormorant': ['Cormorant', 'serif'],
+              'poppins': ['Poppins', 'sans-serif'],
+              'jost': ['Jost', 'sans-serif'],
+              'cormorant-garamond':['Cormorant Garamond', 'sans-serif'],
           },
         },
   },
@@ -13,3 +16,4 @@ module.exports = {
       require('@tailwindcss/line-clamp'),
   ],
 }
+

@@ -22,7 +22,7 @@ export default {
   name: "BlogEntry_GraphQL",
   components: {ImageText},
   setup() {
-    console.log('Hallo setup')
+    console.log('Hallo GraphQL')
     const PostById = `
       query PostById ($id: String) {
         postById (id: $id){

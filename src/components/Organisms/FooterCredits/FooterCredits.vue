@@ -1,13 +1,17 @@
 <template>
-  <div class="pb-10 font-mono font-light tracking-widest">
-  <div class="p-4 text-sm font-light text-stone-500 content-center text-center ">© Mystery Blog by John Watson | Made with ♥.</div>
-  <div class="text-center text-stone-500">
-    <a href="#" class="hover:text-rose-500"><font-awesome-icon class="p-2" icon="fa-brands fa-facebook" /></a>
-    <a href="#" class="hover:text-rose-500"><font-awesome-icon class="p-2" icon="fa-brands fa-twitter" /></a>
-    <a href="#" class="hover:text-rose-500"><font-awesome-icon class="p-2" icon="fa-brands fa-behance" /></a>
-    <a href="#" class="hover:text-rose-500"><font-awesome-icon class="p-2" icon="fa-solid fa-envelope" /></a>
-  </div>
-  </div>
+  <footer class="">
+    <div class="fixed bottom-10 left-10">
+      <div class="fixed z-50">
+        <p class="font-mono text-stone-700 font-light text-sm tracking-[.20em]">
+          <a href="#" class="hover:text-gray-300"><font-awesome-icon class="" icon="fa-brands fa-facebook" /></a>
+          <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-brands fa-twitter" /></a>
+          <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-brands fa-behance" /></a>
+          <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-solid fa-envelope" /></a>
+          <span class="pl-2 text-stone-700 text-xs tracking-tighter"> | © 2026 by Astrid Schindler | All rights reserved.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>

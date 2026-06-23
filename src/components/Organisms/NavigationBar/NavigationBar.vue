@@ -1,45 +1,52 @@
 <template>
-  <nav class="sticky top-0 z-50 bg-white border-gray-200 px-2 sm:px-4 py-2.5 font-mono shadow-sm">
-    <div class="container flex flex-wrap items-center justify-between mx-auto">
-      <!-- LOGO -->
-      <router-link to="/" class="flex items-center">
-        <div class="logo animate__animated animate__fadeInDown text-rose-500"><font-awesome-icon icon="fa-solid fa-i-cursor" /></div>
-        <span class="animate__animated animate__fadeInDown self-center text-xl font-light whitespace-nowrap tracking-widest">Mystery Blog</span>
-      </router-link>
-      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 z-30 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-      </button>
-      <!-- MENU LIST -->
-      <div class="hidden w-full md:block md:w-auto tracking-widest" id="navbar-default">
-        <ul class="flex flex-col p-4 mt-4 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
-          <li>
-            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/">Home</router-link>
-          </li>
-          <li>
-            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/about">About</router-link>
-          </li>
-          <li>
-            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/blog">Blog</router-link>
-          </li>
-          <li>
-            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/contact">Contact</router-link>
-          </li>
-          <li>
-            <p>|</p>
-          </li>
-          <li>
-            <router-link class="block py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 md:hover:bg-rose-200" to="/login">Login</router-link>
-          </li>
-        </ul>
-      </div>
+  <div class="fixed text-stone-700 right-10 bottom-1/3 pb-6 z-50">
+    <div class="fixed grid z-50">
+      <p class="[writing-mode:vertical-rl] font-mono font-extralight text-xs pr-2">Dresden, Saxony – 3°C – 23<span class="animate__animated animate__flash animate__infinite animate__slower">:</span>37 – cloudy <span class="animate__animated animate__flash animate__infinite animate__slower">→</span></p>
     </div>
-  </nav>
+  </div>
+  <header class="z-50">
+    <nav class="z-50">
+      <div class="flex flex-row justify-between top-10 left-10 fixed">
+          <span class="animate__animated animate__fadeInDown font-mono text-xs text-stone-700 pr-72">A | S</span>
+        <p class="font-mono text-stone-700 font-extralight text-xs">
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(1) Home </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(2) About </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(3) Skills/Interests </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(4) Projects </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(5) Contact </a>
+        </p>
+      </div>
+    </nav>
+      <div class="fixed top-10 right-10">
+        <div class="grid z-50">
+
+        </div>
+        </div>
+      <div class="fixed bottom-10 left-10">
+        <div class="fixed z-50">
+          <p class="font-mono text-stone-700 font-light text-sm tracking-[.20em]">
+            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="" icon="fa-brands fa-facebook" /></a>
+            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-brands fa-twitter" /></a>
+            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-brands fa-behance" /></a>
+            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-solid fa-envelope" /></a>
+            <span class="pl-2 text-stone-700 text-xs tracking-tighter"> | © 2026 by Astrid Schindler | All rights reserved.</span>
+          </p>
+        </div>
+      </div>
+
+  </header>
+
 </template>
 
 <script>
 export default {
-  name: "NavigationBar"
+  name: "NavigationBar",
+  methods: {
+    myFunction() {
+      const element = document.getElementById("box2");
+      element.scrollIntoView({behavior: "smooth"});
+    }
+  },
 }
 </script>
 

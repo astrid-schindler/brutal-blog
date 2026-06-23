@@ -5,6 +5,7 @@ import AboutPage from "@/components/Pages/AboutPage/AboutPage";
 import ContactPage from "@/components/Pages/ContactPage/ContactPage";
 import VideoPage from "@/components/Pages/VideoPage/VideoPage";
 import LoginPage from "@/components/Pages/LoginPage/LoginPage";
+import ServicesPage from "@/components/Pages/ServicesPage/ServicesPage";
 import BlogEntry_GraphQL from "@/components/Pages/BlogEntry/BlogEntry_GraphQL";
 import BlogOverview_GraphQL from "@/components/Pages/BlogOverview/BlogOverview_GraphQL";
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: ContactPage
+  },
+  {
+    path: '/leistungen',
+    name: 'leistungen',
+    component: ServicesPage
   },
   {
     path: '/video-call',

@@ -1,48 +1,45 @@
 <template>
-<the-heading the-headline="Contact"></the-heading>
-  <div class="pt-10 grid grid-cols-2 gap-x-48 gap-y-16 max-sm:grid-cols-1">
-    <div>
-      <p class="pb-6">If you have a specific interest to cooperate with us, then please write an email or send us a beautiful letter.</p>
+<the-heading data-aos="fade-right"
+             data-aos-offset="300"
+             data-aos-easing="ease-in-sine" the-headline="CONTACT"></the-heading>
+  <div class="breite">
+  <div class="pt-20 font-extralight grid grid-cols-2 gap-x-28 gap-y-16 max-sm:grid-cols-1 text-xs">
+    <div class="tracking-wide">
+      <p class="pb-6 float-left text-justify text-xs">If you have an interest in working with me, please write an e-mail or send a beautiful, old-fashioned letter. :)</p>
       <br>
-      <p class="font-bold">Address:</p>
-      <p>Mystery Blog</p>
-      <p>Baker Street 221b</p>
-      <p>LONDON</p>
-      <p>NW1 6XE</p>
+      <p class="uppercase font-medium text-justify tracking-[.25em] text-sm">Address:</p>
+      <p class="text-justify tracking-wide text-xs">John Doe</p>
+      <p class="text-justify tracking-wide text-xs">6916 Lancaster Rd</p>
+      <p class="text-justify tracking-wide text-xs">Dublin, CA 94568, USA</p>
       <br>
-      <p class="font-bold">EMail:</p>
-      <p>contact@mystery-blog.com</p>
+      <p class="uppercase font-medium text-justify tracking-[.25em] text-sm">Mail:</p>
+      <p>CONTACT@JOHNDOE.COM</p>
       <br>
-      <p class="font-bold">Phone:</p>
-      <p>+44 22 5896646</p>
+      <p class="uppercase font-medium text-justify tracking-[.25em] text-sm">Phone:</p>
+      <p>+1 (234) 567890</p>
     </div>
     <div>
-      <p class="pb-6">Do you have any simple questions? Feel free and use our contact form.</p>
+    <p class="pb-6 text-justify tracking-wide text-xs">Do you have a short question, then feel free to use the contact form. I'm looking forward to hearing from you.</p>
       <form ref="form" @submit.prevent="sendEmail">
       <div class="relative z-0 mb-6 w-full group">
-        <input type="email" name="user_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-pink-600 peer" placeholder=" " required />
-        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-pink-600 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+        <input type="email" name="user_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-2 border-stone-700 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-stone-400 font-light tracking-widest pl-2 peer" placeholder=" " required />
+        <label for="floating_email" class="peer-focus:font-medium absolute pl-2 text-xs text-stone-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-6 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-stone-900 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 uppercase font-medium tracking-[.35em] peer-focus:-translate-y-6">Your e-mail address</label>
       </div>
+        <div class="relative z-0 mb-6 w-full group">
+          <input type="email" name="user_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-2 border-stone-700 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-stone-400 font-light tracking-widest pl-2 peer" placeholder=" " required />
+          <label for="floating_email" class="peer-focus:font-medium absolute pl-2 text-xs text-stone-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-6 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-stone-900 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 uppercase font-medium tracking-[.35em] peer-focus:-translate-y-6">Your name</label>
+        </div>
       <div class="relative z-0 mb-6 w-full group">
-        <input type="text" name="user_name" id="floating_user" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-pink-600 peer" placeholder=" " required />
-        <label for="floating_user" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-pink-600 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Name</label>
-      </div>
-      <div class="relative z-0 mb-6 w-full group">
-        <textarea rows="5" name="message" id="floating_message" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-pink-600 peer" placeholder=" " required />
-        <label for="floating_message" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-pink-600 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Message</label>
+        <textarea rows="5" name="message" id="floating_message" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-2 border-stone-700 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-stone-400 font-light tracking-widest pl-2 peer" placeholder=" " required />
+        <label for="floating_message" class="peer-focus:font-medium absolute pl-2 text-xs text-stone-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-6 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-stone-900 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 uppercase font-medium tracking-[.35em] peer-focus:-translate-y-6">Your message</label>
       </div>
       <div class="grid md:grid-cols-2 md:gap-6">
       </div>
-      <the-button button-icon="fa-envelope" button-text="Submit!"></the-button>
+      <the-button class="hover:text-emerald-300" button-icon="fa-envelope" button-text="Get it out!"></the-button>
     </form>
     </div>
   </div>
 
-  <div class="pt-10">
-    <p>
-      We are always looking for special cases. You can try to get a video call with my colleague S.H. But please understand that we are mostly very busy.
-    </p>
-    <div class="pt-4 content-center"><the-button onclick="location.href='/video-call'" button-text="Get a video call!"></the-button></div>
   </div>
 </template>
 
@@ -68,5 +65,7 @@ export default {
 </script>
 
 <style scoped>
-
+.breite{
+  width: 920px;
+}
 </style>
