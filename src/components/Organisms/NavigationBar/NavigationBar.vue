@@ -7,13 +7,13 @@
   <header class="z-50">
     <nav class="z-50">
       <div class="flex flex-row justify-between top-10 left-10 fixed">
-          <span class="animate__animated animate__fadeInDown font-mono text-xs text-stone-700 pr-72">A | S</span>
+          <span class="animate__animated animate__fadeInDown font-mono text-xs hover:text-red-400 pr-72">A | S</span>
         <p class="font-mono text-stone-700 font-extralight text-xs">
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(1) Home </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(2) About </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(3) Skills/Interests </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(4) Projects </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-emerald-300">(5) Contact </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(1) Home </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(2) About </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(3) Skills/Interests </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(4) Projects </a>
+          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(5) Contact </a>
         </p>
       </div>
     </nav>
