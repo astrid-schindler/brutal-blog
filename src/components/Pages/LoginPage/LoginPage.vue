@@ -1,6 +1,6 @@
 <template>
 <TheHeading the-headline="LOGIN"></TheHeading>
-  <div role="alert" class="text-center px-72 max-sm:px-8 max-md:px-8 hidden" id="alertBox">
+  <div role="alert" class="layout-section text-center hidden" id="alertBox">
     <div class="bg-red-500 text-white font-bold px-4 py-2">
       Danger
     </div>
@@ -8,30 +8,20 @@
       <p>{{ message }}</p>
     </div>
   </div>
-  <div class="flex flex-row justify-center items-center text-center pt-12">
-    <form>
-      <div class="relative z-0 mb-6 group w-96 text-left max-sm:w-64">
-        <input type="text" name="username" id="floating_username" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-4 border-black appearance-none dark:text-white dark:border-gray-600 dark:focus:border-pink-500 focus:outline-none focus:ring-0 focus:border-stone-600 pl-2 peer" placeholder=" " required />
-        <label for="floating_username" class="peer-focus:font-medium absolute pl-2 text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-6 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-stone-600 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 uppercase font-medium tracking-widest text-black">Benutzername</label>
-      </div>
-      <div class="relative z-0 mb-6 group w-96 text-left max-sm:w-64">
-        <input type="password" name="password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-4 border-black appearance-none dark:text-white dark:border-gray-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 pl-2 peer" placeholder=" " required />
-        <label for="floating_password" class="peer-focus:font-medium absolute pl-2 text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-6 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-stone-600 peer-focus:dark:text-pink-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 uppercase font-medium tracking-widest text-black">Passwort</label>
-      </div>
-      <the-button button-icon="fa-envelope" @click="sendingCredentials" button-text="Log in!"></the-button>
-    </form>
+  <div class="layout-grid text-center pt-12">
+    <login-form @submit-login="sendingCredentials"></login-form>
   </div>
 </template>
 
 <script>
 import TheHeading from "@/components/Atoms/TheHeading/TheHeading";
-import TheButton from "@/components/Atoms/TheButton/TheButton";
+import LoginForm from "@/components/Molecules/LoginForm/LoginForm";
 import axios from 'axios'
 //import Cookies from 'js-cookie'
 
 export default {
   name: "LoginPage",
-  components: {TheHeading, TheButton},
+  components: {LoginForm, TheHeading},
   props: {
 
   },

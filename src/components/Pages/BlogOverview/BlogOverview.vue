@@ -3,13 +3,13 @@
                 data-aos-offset="300"
                 data-aos-easing="ease-in-sine" the-headline="Projects"></TheHeading>
         <div v-for="entry in entries" :key="entry.id">
-            <div v-if="entry.id % 2 !== 0" class="py-16 grid grid-cols-3 gap-4 max-sm:grid-cols-1 hover:text-rose-500">
-              <div class="">
+            <div v-if="entry.id % 2 !== 0" class="layout-grid py-16 hover:text-rose-500 max-md:py-10">
+              <div class="layout-third max-md:order-1">
                 <router-link :to="'/blogpost/' + entry.id">
                 <img class="" :src="`${entry.picture}`" alt="Neon-Pink-Urban">
                 </router-link>
               </div>
-              <div class="col-span-2 ">
+              <div class="layout-two-thirds max-md:order-2">
                 <router-link :to="'/blogpost/' + entry.id">
                 <div class="text-3xl font-medium content-center ">{{entry.title}}</div>
                 </router-link>
@@ -19,17 +19,17 @@
                 </p>
               </div>
             </div>
-          <div v-else class="py-16 grid grid-cols-3 gap-4 max-sm:grid-cols-1 hover:text-rose-500">
-            <div class="col-span-2">
+          <div v-else class="layout-grid py-16 hover:text-rose-500 max-md:py-10">
+            <div class="layout-two-thirds max-md:order-2">
               <router-link :to="'/blogpost/' + entry.id">
-              <div class="text-3xl font-medium content-center text-right ">{{entry.title}}</div>
+              <div class="text-3xl font-medium content-center text-right max-md:text-left">{{entry.title}}</div>
               </router-link>
-              <div class="py-4 italic text-sm font-light text-stone-500 content-center text-right">{{entry.date}} | {{entry.author}} | {{entry.category}}</div>
-              <p class="text-right text-black">
+              <div class="py-4 italic text-sm font-light text-stone-500 content-center text-right max-md:text-left">{{entry.date}} | {{entry.author}} | {{entry.category}}</div>
+              <p class="text-right text-black max-md:text-left">
                 {{entry.content}}<router-link class="text-rose-500 hover:font-medium" :to="'/blogpost/' + entry.id"> Read more ... </router-link>
               </p>
             </div>
-            <div class="">
+            <div class="layout-third max-md:order-1">
               <router-link :to="'/blogpost/' + entry.id">
               <img class="" :src="`${entry.picture}`">
               </router-link>
@@ -69,7 +69,3 @@ export default {
   methods: trim(),
 }
 </script>
-
-<style scoped>
-
-</style>

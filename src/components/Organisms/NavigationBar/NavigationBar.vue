@@ -1,55 +1,31 @@
 <template>
-  <div class="fixed text-stone-700 right-10 bottom-1/3 pb-6 z-50">
-    <div class="fixed grid z-50">
-      <p class="[writing-mode:vertical-rl] font-mono font-extralight text-xs pr-2">Dresden, Saxony – 3°C – 23<span class="animate__animated animate__flash animate__infinite animate__slower">:</span>37 – cloudy <span class="animate__animated animate__flash animate__infinite animate__slower">→</span></p>
-    </div>
-  </div>
-  <header class="z-50">
-    <nav class="z-50">
-      <div class="flex flex-row justify-between top-10 left-10 fixed">
-          <span class="animate__animated animate__fadeInDown font-mono text-xs hover:text-red-400 pr-72">A | S</span>
-        <p class="font-mono text-stone-700 font-extralight text-xs">
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(1) Home </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(2) About </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(3) Skills/Interests </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(4) Projects </a>
-          <a href="#" v-on:click="myFunction" class="hover:underline hover:text-red-400">(5) Contact </a>
-        </p>
-      </div>
+  <header class="pointer-events-none z-50 text-stone-950">
+    <nav class="fixed top-[clamp(1rem,3vw,1.5rem)] left-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] z-50 grid grid-cols-12 items-start gap-x-[var(--layout-gap)] border-4 border-stone-950 bg-[var(--honey-light)] p-2 shadow-[6px_6px_0_#1c1917,12px_12px_0_var(--peace-lilac)] max-lg:grid-cols-8 max-md:grid-cols-4 max-md:gap-y-2 max-[480px]:grid-cols-[auto_minmax(0,1fr)]">
+      <span class="pointer-events-auto col-span-1 inline-flex border-4 border-stone-950 bg-[var(--peace-mint)] px-2 py-1 font-mono text-xs font-black text-stone-950 animate__animated animate__fadeInDown hover:bg-stone-950 hover:text-white">A/S</span>
+      <navigation-links @navigate="scrollToSection"></navigation-links>
     </nav>
-      <div class="fixed top-10 right-10">
-        <div class="grid z-50">
-
-        </div>
-        </div>
-      <div class="fixed bottom-10 left-10">
-        <div class="fixed z-50">
-          <p class="font-mono text-stone-700 font-light text-sm tracking-[.20em]">
-            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="" icon="fa-brands fa-facebook" /></a>
-            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-brands fa-twitter" /></a>
-            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-brands fa-behance" /></a>
-            <a href="#" class="hover:text-gray-300"><font-awesome-icon class="pl-6" icon="fa-solid fa-envelope" /></a>
-            <span class="pl-2 text-stone-700 text-xs tracking-tighter"> | © 2026 by Astrid Schindler | All rights reserved.</span>
-          </p>
-        </div>
-      </div>
-
   </header>
-
 </template>
 
 <script>
+import NavigationLinks from "@/components/Molecules/NavigationLinks/NavigationLinks";
+
 export default {
   name: "NavigationBar",
+  components: {NavigationLinks},
   methods: {
-    myFunction() {
-      const element = document.getElementById("box2");
-      element.scrollIntoView({behavior: "smooth"});
+    scrollToSection(target) {
+      const element = document.getElementById(target);
+
+      if (element) {
+        element.scrollIntoView({behavior: "smooth"});
+        return;
+      }
+
+      if (target === "projects") {
+        this.$router.push("/blog");
+      }
     }
   },
 }
 </script>
-
-<style scoped>
-@import "NavigationBar.css";
-</style>
