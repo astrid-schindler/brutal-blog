@@ -31,21 +31,21 @@ export default {
   width: var(--sprite-size, 4rem);
   aspect-ratio: 1;
   image-rendering: pixelated;
-  filter: drop-shadow(5px 5px 0 #1c1917);
+  filter: drop-shadow(5px 5px 0 #44403c);
   animation: pixel-float 7s steps(7, end) infinite;
 }
 
 .pixel-sprite--flower {
   background:
-    linear-gradient(#1c1917 0 0) 38% 0 / 24% 24%,
-    linear-gradient(#1c1917 0 0) 0 38% / 24% 24%,
-    linear-gradient(#1c1917 0 0) 76% 38% / 24% 24%,
-    linear-gradient(#1c1917 0 0) 38% 76% / 24% 24%,
+    linear-gradient(#44403c 0 0) 38% 0 / 24% 24%,
+    linear-gradient(#44403c 0 0) 0 38% / 24% 24%,
+    linear-gradient(#44403c 0 0) 76% 38% / 24% 24%,
+    linear-gradient(#44403c 0 0) 38% 76% / 24% 24%,
     linear-gradient(#ff4fd8 0 0) 38% 0 / 24% 24%,
     linear-gradient(#00e5ff 0 0) 0 38% / 24% 24%,
     linear-gradient(#7cff00 0 0) 76% 38% / 24% 24%,
     linear-gradient(#fb8500 0 0) 38% 76% / 24% 24%,
-    linear-gradient(#fff3a3 0 0) 38% 38% / 24% 24%;
+    linear-gradient(#ffffff 0 0) 38% 38% / 24% 24%;
   background-repeat: no-repeat;
 }
 
@@ -81,14 +81,14 @@ export default {
   --sprite-size: clamp(3rem, 6vw, 5rem);
   right: 10%;
   top: 22%;
-  border: 4px solid #1c1917;
+  border: 4px solid #44403c;
   background:
-    linear-gradient(#1c1917 0 0) 25% 30% / 15% 15%,
-    linear-gradient(#1c1917 0 0) 62% 30% / 15% 15%,
-    linear-gradient(#1c1917 0 0) 28% 66% / 12% 12%,
-    linear-gradient(#1c1917 0 0) 40% 74% / 24% 12%,
-    linear-gradient(#1c1917 0 0) 64% 66% / 12% 12%,
-    #ffd60a;
+    linear-gradient(#44403c 0 0) 25% 30% / 15% 15%,
+    linear-gradient(#44403c 0 0) 62% 30% / 15% 15%,
+    linear-gradient(#44403c 0 0) 28% 66% / 12% 12%,
+    linear-gradient(#44403c 0 0) 40% 74% / 24% 12%,
+    linear-gradient(#44403c 0 0) 64% 66% / 12% 12%,
+    #ffffff;
   background-repeat: no-repeat;
   animation-delay: -3.2s;
 }
@@ -96,10 +96,10 @@ export default {
 .pixel-sprite--spark {
   --sprite-size: clamp(1.9rem, 3vw, 2.8rem);
   background:
-    linear-gradient(#fff3a3 0 0) 40% 0 / 20% 100%,
-    linear-gradient(#fff3a3 0 0) 0 40% / 100% 20%,
-    linear-gradient(#1c1917 0 0) 40% 0 / 20% 100%,
-    linear-gradient(#1c1917 0 0) 0 40% / 100% 20%;
+    linear-gradient(#ffffff 0 0) 40% 0 / 20% 100%,
+    linear-gradient(#ffffff 0 0) 0 40% / 100% 20%,
+    linear-gradient(#44403c 0 0) 40% 0 / 20% 100%,
+    linear-gradient(#44403c 0 0) 0 40% / 100% 20%;
   background-repeat: no-repeat;
   animation: pixel-blink 1.2s steps(2, end) infinite;
 }
@@ -119,16 +119,16 @@ export default {
   position: absolute;
   left: 0;
   bottom: clamp(0.75rem, 2vw, 1.25rem);
-  border-block: 3px solid #1c1917;
-  background: #fff3a3;
-  color: #1c1917;
-  box-shadow: 0 5px 0 #1c1917;
+  border-block: 3px solid #44403c;
+  background: #ffffff;
+  color: #44403c;
+  box-shadow: 0 5px 0 #44403c;
   padding: 0.35rem 0;
   width: max-content;
   min-width: 100%;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono-serif);
   font-size: clamp(0.68rem, 1.2vw, 0.9rem);
-  font-weight: 900;
+  font-weight: 300;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   white-space: nowrap;

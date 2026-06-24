@@ -1,11 +1,13 @@
 <template>
-  <the-heading data-aos="fade-right"
-               data-aos-offset="300"
-               data-aos-easing="ease-in-sine"
-               the-headline="CONTACT"></the-heading>
-  <div class="layout-grid pt-20 text-xs font-bold max-md:px-4 max-md:pt-12">
-    <contact-info></contact-info>
-    <contact-form @submit-form="sendEmail"></contact-form>
+  <div class="contact-page">
+    <the-heading data-aos="fade-right"
+                 data-aos-offset="300"
+                 data-aos-easing="ease-in-sine"
+                 the-headline="CONTACT"></the-heading>
+    <div class="contact-page__grid layout-grid pt-20 text-xs font-light max-md:px-4 max-md:pt-12">
+      <contact-info></contact-info>
+      <contact-form @submit-form="sendEmail"></contact-form>
+    </div>
   </div>
 </template>
 
@@ -30,3 +32,34 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.contact-page {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .contact-page {
+    display: grid;
+    justify-items: center;
+    width: min(100%, 48rem);
+    margin-inline: auto;
+  }
+
+  .contact-page__grid {
+    width: 100%;
+    justify-items: center;
+    row-gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+    width: min(100%, 34rem);
+  }
+
+  .contact-page__grid {
+    row-gap: 2rem;
+  }
+}
+</style>

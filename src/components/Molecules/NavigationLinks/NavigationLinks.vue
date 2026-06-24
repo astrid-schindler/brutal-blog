@@ -1,10 +1,9 @@
 <template>
-  <p class="pointer-events-auto col-start-3 col-end-[-1] flex flex-wrap justify-end gap-2 font-mono text-xs font-bold uppercase text-stone-950 max-md:col-start-2 max-md:justify-start max-md:text-[0.68rem] max-[480px]:col-start-2">
+  <p class="navigation-links pointer-events-auto col-start-3 col-end-[-1] flex flex-wrap justify-end gap-x-4 gap-y-1 text-xs max-md:col-start-2 max-md:justify-start max-md:text-[0.68rem] max-[480px]:col-start-2">
     <a
       v-for="item in items"
       :key="item.label"
       href="#"
-      class="brutal-link"
       @click.prevent="$emit('navigate', item.target)"
     >
       {{ item.label }}
@@ -31,3 +30,29 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.navigation-links,
+.navigation-links a {
+  color: #44403c;
+  font-family: var(--font-mono-serif);
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.navigation-links a {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+.navigation-links a:hover,
+.navigation-links a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  outline: none;
+}
+</style>

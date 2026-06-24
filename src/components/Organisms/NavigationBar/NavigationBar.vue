@@ -1,7 +1,7 @@
 <template>
-  <header class="pointer-events-none z-50 text-stone-950">
-    <nav class="fixed top-[clamp(1rem,3vw,1.5rem)] left-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] z-50 grid grid-cols-12 items-start gap-x-[var(--layout-gap)] border-4 border-stone-950 bg-[var(--honey-light)] p-2 shadow-[6px_6px_0_#1c1917,12px_12px_0_var(--peace-lilac)] max-lg:grid-cols-8 max-md:grid-cols-4 max-md:gap-y-2 max-[480px]:grid-cols-[auto_minmax(0,1fr)]">
-      <span class="pointer-events-auto col-span-1 inline-flex border-4 border-stone-950 bg-[var(--peace-mint)] px-2 py-1 font-mono text-xs font-black text-stone-950 animate__animated animate__fadeInDown hover:bg-stone-950 hover:text-white">A/S</span>
+  <header class="minimal-navigation pointer-events-none z-50">
+    <nav class="pointer-events-auto fixed left-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] top-[clamp(1rem,3vw,1.5rem)] z-50 grid grid-cols-12 items-start gap-x-[var(--layout-gap)] bg-white p-0 max-lg:grid-cols-8 max-md:grid-cols-4 max-md:gap-y-2 max-[480px]:grid-cols-[auto_minmax(0,1fr)]">
+      <span class="col-span-1 inline-flex px-0 py-1 text-xs">A/S</span>
       <navigation-links @navigate="scrollToSection"></navigation-links>
     </nav>
   </header>
@@ -29,3 +29,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.minimal-navigation,
+.minimal-navigation :deep(*) {
+  color: #44403c;
+  font-family: var(--font-mono-serif);
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  animation: none;
+}
+</style>

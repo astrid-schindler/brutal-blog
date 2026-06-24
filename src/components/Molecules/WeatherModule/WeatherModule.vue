@@ -1,7 +1,7 @@
 <template>
-  <p class="pointer-events-auto fixed right-[clamp(1rem,3vw,2rem)] bottom-[33vh] z-50 border-2 border-stone-950 bg-[var(--brutal-pink)] px-2 py-3 [writing-mode:vertical-rl] font-mono text-xs font-black uppercase shadow-[5px_5px_0_#1c1917] max-md:bottom-[20vh] max-md:text-[0.65rem] max-[480px]:hidden">
-    {{ location }} - {{ temperature }} - {{ time }}<span class="animate__animated animate__flash animate__infinite animate__slower">:</span>{{ minutes }} - {{ condition }}
-    <span class="animate__animated animate__flash animate__infinite animate__slower">-&gt;</span>
+  <p class="minimal-weather pointer-events-auto fixed bottom-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] z-50 px-0 py-0 text-xs [writing-mode:vertical-rl] max-md:text-[0.65rem] max-[480px]:hidden">
+    {{ location }} - {{ temperature }} - {{ time }}<span>:</span>{{ minutes }} - {{ condition }}
+    <span class="minimal-weather__arrow">-&gt;</span>
   </p>
 </template>
 
@@ -32,3 +32,38 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.minimal-weather,
+.minimal-weather * {
+  color: #44403c;
+  font-family: var(--font-mono-serif);
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.minimal-weather__arrow {
+  display: inline-block;
+  animation: weather-arrow-blink 1.2s steps(2, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .minimal-weather__arrow {
+    animation: none;
+  }
+}
+
+@keyframes weather-arrow-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+
+  46%, 100% {
+    opacity: 0;
+  }
+}
+</style>

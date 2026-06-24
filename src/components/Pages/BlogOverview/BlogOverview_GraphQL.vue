@@ -4,7 +4,7 @@
               data-aos-easing="ease-in-sine" the-headline="Projects"></TheHeading>
   <div v-if="data" class="content-center items-center">
       <div v-for="post in data.allPosts" :key="post.id">
-        <div v-if="data.allPosts.indexOf(post) % 2 == 0" class="layout-grid py-16 hover:text-stone-300 border-black max-md:py-10 max-md:place-items-stretch" id="post-left">
+        <div v-if="data.allPosts.indexOf(post) % 2 == 0" class="layout-grid py-16 hover:text-stone-700 max-md:py-10 max-md:place-items-stretch" id="post-left">
           <div class="layout-third max-md:order-1">
             <router-link :to="'/blogpost/' + post.id">
               <img :src="`${post.imageUrl}`" alt="Blogpost Picture">
@@ -12,26 +12,26 @@
           </div>
           <div class="layout-two-thirds max-md:order-2">
             <router-link :to="'/blogpost/' + post.id">
-              <div class="text-3xl font-medium uppercase tracking-widest content-center">{{post.title}}</div>
+              <div class="text-3xl font-light tracking-normal content-center max-md:text-center max-md:text-[clamp(1.5rem,8vw,2rem)]">{{post.title}}</div>
             </router-link>
-            <div class="py-4 italic text-xs font-light text-white content-center">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
-            <p class="contentText text-white text-xs line-clamp-3 text-justify" :id="post.id">
+            <div class="py-4 italic text-xs font-light text-stone-700 content-center max-md:text-center max-md:[overflow-wrap:anywhere]">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
+            <p class="contentText text-stone-700 text-xs line-clamp-3 text-justify max-md:text-center" :id="post.id">
               {{post.content}}
             </p>
-            <router-link class="text-stone-500 font-medium uppercase tracking-widest" :to="'/blogpost/' + post.id">Read more</router-link>
+            <router-link class="text-stone-500 font-light tracking-normal max-md:block max-md:text-center" :to="'/blogpost/' + post.id">Read more</router-link>
           </div>
         </div>
-        <div v-else class="layout-grid py-16 place-items-end hover:text-stone-300 border-black max-md:py-10 max-md:place-items-stretch" id="post-left">
+        <div v-else class="layout-grid py-16 place-items-end hover:text-stone-700 max-md:py-10 max-md:place-items-stretch" id="post-left">
           <div class="layout-two-thirds max-md:order-2">
             <router-link :to="'/blogpost/' + post.id">
-              <div class="text-3xl font-medium uppercase tracking-widest content-center text-right max-md:text-left">{{post.title}}</div>
+              <div class="text-3xl font-light tracking-normal content-center text-right max-md:text-center max-md:text-[clamp(1.5rem,8vw,2rem)]">{{post.title}}</div>
             </router-link>
-            <div class="py-4 italic text-xs font-light text-white content-center text-right max-md:text-left">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
-            <p class="text-right text-white text-xs line-clamp-3 text-justify max-md:text-left">
+            <div class="py-4 italic text-xs font-light text-stone-700 content-center text-right max-md:text-center max-md:[overflow-wrap:anywhere]">{{post.publishDate}} | {{post.author}} | {{post.category}}</div>
+            <p class="text-right text-stone-700 text-xs line-clamp-3 text-justify max-md:text-center">
               {{post.content}}
             </p>
             <router-link :to="'/blogpost/' + post.id">
-              <p class="text-stone-500 content-center uppercase tracking-widest text-right font-medium max-md:text-left">Read more</p>
+              <p class="text-stone-500 content-center tracking-normal text-right font-light max-md:text-center">Read more</p>
             </router-link>
           </div>
           <div class="layout-third max-md:order-1">

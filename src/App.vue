@@ -1,5 +1,5 @@
 <template>
-  <div class="app-shell text-stone-900">
+  <div class="app-shell text-stone-700">
       <PageContent></PageContent>
   </div>
 </template>
