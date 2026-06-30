@@ -106,6 +106,7 @@ brutal-blog/
 Die Routen liegen in `src/router/index.js`:
 
 - `/` Startseite
+- `/photography` Photography-Galerie
 - `/blog` Blog- und Projektübersicht
 - `/projects` Redirect auf `/blog`
 - `/blogpost/:id` Detailseite für einzelne Blogposts
@@ -406,6 +407,7 @@ brutal-blog/
 Routes are defined in `src/router/index.js`:
 
 - `/` home page
+- `/photography` photography gallery
 - `/blog` blog and project overview
 - `/projects` redirect to `/blog`
 - `/blogpost/:id` detail page for individual blog posts

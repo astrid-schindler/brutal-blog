@@ -1,7 +1,6 @@
 describe("Photography gallery sessions", () => {
   it("shows only the session covers in the grid and opens their attached series in the modal", () => {
-    cy.visit(Cypress.env("BASE_URL") || "http://127.0.0.1:8085/");
-    cy.get("#photography").scrollIntoView();
+    cy.visit(`${Cypress.env("BASE_URL") || "http://127.0.0.1:8085"}/photography`);
 
     cy.get(".photography-gallery__thumb img[src*='photo_061.']")
       .should("have.length", 1)

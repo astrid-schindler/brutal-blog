@@ -6,6 +6,7 @@ import ContactPage from "@/components/Pages/ContactPage/ContactPage";
 import VideoPage from "@/components/Pages/VideoPage/VideoPage";
 import LoginPage from "@/components/Pages/LoginPage/LoginPage";
 import ServicesPage from "@/components/Pages/ServicesPage/ServicesPage";
+import PhotographyPage from "@/components/Pages/PhotographyPage/PhotographyPage";
 import BlogEntry_GraphQL from "@/components/Pages/BlogEntry/BlogEntry_GraphQL";
 import BlogOverview_GraphQL from "@/components/Pages/BlogOverview/BlogOverview_GraphQL";
 
@@ -19,6 +20,11 @@ var routes = [
     path: '/blog',
     name: 'blog',
     component: BlogOverview_GraphQL
+  },
+  {
+    path: '/photography',
+    name: 'photography',
+    component: PhotographyPage
   },
   {
     path: '/projects',
