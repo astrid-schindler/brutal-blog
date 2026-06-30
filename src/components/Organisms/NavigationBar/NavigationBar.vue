@@ -7,11 +7,34 @@
       <span class="col-span-2 inline-flex items-center px-0 py-0 font-mono text-xs font-normal lowercase leading-none max-md:col-span-1 max-md:text-[0.68rem]">
         arlowe santoro
       </span>
-      <div class="minimal-navigation__actions col-start-3 col-end-[-1] flex items-start justify-end gap-x-4 gap-y-1 max-md:col-start-2 max-md:justify-start">
-        <navigation-links @navigate="scrollToSection"></navigation-links>
+      <div class="minimal-navigation__actions col-start-3 col-end-[-1] flex items-start justify-end gap-x-4 gap-y-1 max-md:col-start-2">
         <button
           type="button"
-          class="grid h-4 w-4 flex-none place-items-center p-0 text-[0.72rem] leading-none [&_svg]:h-[0.78rem] [&_svg]:w-[0.78rem]"
+          class="minimal-navigation__menu-button hidden border-0 bg-transparent p-0 font-mono text-[0.68rem] font-light leading-none text-current shadow-none"
+          :aria-expanded="isMenuOpen ? 'true' : 'false'"
+          aria-controls="site-navigation-links"
+          @click="toggleMenu"
+        >
+          {{ isMenuOpen ? "Close" : "Menu" }}
+        </button>
+        <div
+          id="site-navigation-links"
+          class="minimal-navigation__menu"
+          :class="{'minimal-navigation__menu--open': isMenuOpen}"
+        >
+          <navigation-links class="minimal-navigation__links" @navigate="handleNavigate"></navigation-links>
+          <button
+            type="button"
+            class="minimal-navigation__theme-button minimal-navigation__theme-button--mobile"
+            :aria-label="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+            @click="toggleDarkMode"
+          >
+            {{ isDarkMode ? "Light mode" : "Dark mode" }}
+          </button>
+        </div>
+        <button
+          type="button"
+          class="minimal-navigation__theme-button minimal-navigation__theme-button--desktop grid h-4 w-4 flex-none place-items-center p-0 text-[0.72rem] leading-none [&_svg]:h-[0.78rem] [&_svg]:w-[0.78rem]"
           :aria-label="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
           :title="isDarkMode ? 'Light mode' : 'Dark mode'"
           @click="toggleDarkMode"
@@ -34,6 +57,7 @@ export default {
     return {
       isHeroNavigation: false,
       isDarkMode: false,
+      isMenuOpen: false,
       themeTimer: null,
     };
   },
@@ -51,10 +75,18 @@ export default {
   },
   watch: {
     "$route.path"() {
+      this.isMenuOpen = false;
       this.scheduleNavigationToneUpdate();
     },
   },
   methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    handleNavigate(target) {
+      this.isMenuOpen = false;
+      this.scrollToSection(target);
+    },
     scheduleNavigationToneUpdate() {
       this.$nextTick(() => {
         window.requestAnimationFrame(this.updateNavigationTone);
@@ -126,6 +158,7 @@ export default {
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
       document.documentElement.dataset.theme = this.isDarkMode ? "dark" : "light";
+      this.isMenuOpen = false;
     },
   },
 }
@@ -144,10 +177,71 @@ export default {
   min-width: 0;
 }
 
+.minimal-navigation__theme-button {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.minimal-navigation__theme-button--mobile {
+  display: none;
+  width: max-content;
+  padding: 0;
+  font-family: var(--font-mono-serif);
+  font-size: 0.68rem;
+  font-weight: 300;
+  line-height: 1;
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   .minimal-navigation__actions,
   .minimal-navigation__actions :deep(.navigation-links) {
     justify-content: flex-start;
+  }
+
+  .minimal-navigation__actions {
+    position: relative;
+    justify-content: flex-end;
+  }
+
+  .minimal-navigation__menu-button {
+    display: inline-flex;
+  }
+
+  .minimal-navigation__theme-button--desktop {
+    display: none;
+  }
+
+  .minimal-navigation__menu {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    display: none !important;
+    width: max-content;
+    max-width: min(14rem, calc(100vw - 2rem));
+    justify-items: end;
+    row-gap: 0.55rem;
+    padding: 0;
+    text-align: right;
+  }
+
+  .minimal-navigation__menu--open {
+    display: grid !important;
+  }
+
+  .minimal-navigation__menu :deep(.navigation-links) {
+    display: grid;
+    justify-items: end;
+    row-gap: 0.55rem;
+  }
+
+  .minimal-navigation__theme-button--mobile {
+    display: inline-flex;
+  }
+
+  .minimal-navigation__links :deep(a) {
+    width: max-content;
   }
 }
 </style>

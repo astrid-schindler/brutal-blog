@@ -1,7 +1,6 @@
 describe("Photography gallery modal", () => {
   it("navigates with arrow keys and closes without changing scroll position", () => {
-    cy.visit("http://127.0.0.1:8085/");
-    cy.get("#photography").scrollIntoView();
+    cy.visit("http://127.0.0.1:8085/photography");
     cy.get(".photography-gallery__thumb").first().click();
 
     cy.get(".photography-gallery__modal").should("be.visible");

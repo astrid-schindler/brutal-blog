@@ -1,17 +1,11 @@
 <template>
   <div class="photography-gallery relative min-h-[100svh] overflow-hidden text-stone-700">
-    <div class="photography-gallery__bar sticky top-0 z-30 grid w-full grid-cols-12 gap-x-[var(--layout-gap)] p-5 text-[clamp(1.1rem,2.5vw,2.25rem)] font-light leading-none text-stone-700 max-lg:grid-cols-8 max-lg:text-[clamp(1rem,3vw,1.75rem)] max-md:grid-cols-4 max-md:px-4 max-md:text-base">
-      <p class="col-span-2 pl-1 max-lg:col-span-3 max-md:col-span-2">
-        <span class="block">Photography</span>
-        <span class="block pt-1 text-[0.55rem] font-light leading-tight tracking-normal">
-          AI-generated photos
+    <div class="photography-gallery__bar sticky top-[clamp(3.25rem,6vw,4.5rem)] z-30 grid w-full grid-cols-12 gap-x-[var(--layout-gap)] p-5 text-[clamp(0.74rem,1.68vw,1.51rem)] font-light leading-none text-stone-700 max-lg:grid-cols-8 max-lg:text-[clamp(0.67rem,2vw,1.17rem)] max-md:grid-cols-4 max-md:px-4 max-md:text-[0.67rem]">
+      <p class="col-span-12 pl-1 max-lg:col-span-8 max-md:col-span-4">
+        <span class="block text-[clamp(1.1rem,2.5vw,2.25rem)] max-lg:text-[clamp(1rem,3vw,1.75rem)] max-md:text-base">Photography</span>
+        <span class="block pt-1 text-[0.55rem] font-light leading-tight tracking-normal max-md:text-[0.5rem]">
+          Personal Archive / {{ photos.length }} Images
         </span>
-      </p>
-      <p class="col-span-6 max-lg:col-span-3 max-md:hidden">
-        (c) Flash Archive
-      </p>
-      <p class="col-span-4 text-right max-lg:col-span-2 max-md:col-span-2">
-        {{ photos.length }} Images
       </p>
     </div>
 
@@ -22,23 +16,25 @@
         v-for="photo in photos"
         :key="photo.id"
         class="photography-gallery__item group relative grid min-h-[clamp(17rem,32vw,27rem)] content-center"
+        :class="photoOrientationClass(photo)"
       >
         <button
           type="button"
-          class="photography-gallery__thumb relative z-10 flex h-full w-full cursor-pointer items-center justify-center p-0 transition-opacity duration-150 hover:opacity-75 focus-visible:outline-none"
+          class="photography-gallery__thumb relative z-10 flex h-[clamp(16rem,30vw,26rem)] w-full cursor-pointer items-center justify-center p-0 transition-opacity duration-150 hover:opacity-75 focus-visible:outline-none max-md:h-[clamp(18rem,68vw,29rem)] max-sm:h-[min(74svh,27rem)]"
           @click="openPhoto(photo)"
         >
           <img
             :src="photo.src"
             :alt="photo.alt"
-            class="h-[clamp(16rem,30vw,26rem)] w-full object-contain max-md:h-[clamp(18rem,68vw,29rem)] max-sm:h-[min(74svh,27rem)]"
+            class="h-auto max-h-full max-w-full object-contain"
             loading="lazy"
+            @load="setPhotoOrientation(photo, $event)"
           >
         </button>
 
         <button
           type="button"
-          class="photography-gallery__caption pointer-events-none absolute left-1/2 top-1/2 z-20 grid w-[calc(100%+5rem)] -translate-x-1/2 -translate-y-1/2 grid-cols-[auto_1fr] gap-x-2 text-left text-xs font-light leading-tight text-stone-700 transition-opacity duration-100 max-md:static max-md:mt-3 max-md:w-full max-md:translate-x-0 max-md:translate-y-0 max-md:grid-cols-[auto_1fr] max-md:text-[0.72rem]"
+          class="photography-gallery__caption pointer-events-none z-20 mt-5 grid w-full grid-cols-[auto_1fr] gap-x-2 text-left text-xs font-light leading-tight text-stone-700 transition-opacity duration-100 max-md:mt-3 max-md:text-[0.72rem]"
           tabindex="-1"
           aria-hidden="true"
         >
@@ -337,79 +333,79 @@ var attachedSeries = {
 };
 
 var galleryPhotos = [
-  ["gallery", "photo_006.jpg", "photo_006.jpg", "One sneaker under glass"],
-  ["gallery", "photo_064.jpg", "photo_064.jpg", "Desert tail lights"],
-  ["gallery", "photo_063.jpg", "photo_063.jpg", "Bicycles under the canal bridge"],
-  ["gallery", "photo_030.jpg", "photo_030.jpg", "Oranges in the hallway"],
-  ["gallery", "photo_035.jpg", "photo_035.jpg", "Rooftop towel after rain"],
-  ["gallery", "photo_053.jpg", "photo_053.jpg", "Train compartment morning"],
-  ["gallery", "photo_033.jpg", "photo_033.jpg", "Disco ball inspection"],
-  ["gallery", "photo_040.jpg", "photo_040.jpg", "Balcony coffee morning"],
-  ["gallery", "photo_084.jpg", "photo_084.jpg", "Ivory blazer parquet"],
-  ["gallery", "photo_087.jpg", "photo_087.jpg", "Rooftop camel coat"],
-  ["gallery", "photo_034.jpg", "photo_034.jpg", "Receipt with main character energy"],
-  ["gallery", "photo_043.jpg", "photo_043.jpg", "Grapefruit in the kitchen sink"],
-  ["gallery", "photo_046.jpg", "photo_046.jpg", "Flowers in the bathroom sink"],
-  ["gallery", "photo_079.jpg", "photo_079.jpg", "Stairwell keys"],
-  ["gallery", "photo_025.jpg", "photo_025.jpg", "Kitchen flash after midnight"],
-  ["gallery", "photo_051.jpg", "photo_051.jpg", "Hotel floor morning blonde"],
-  ["gallery", "photo_059.jpg", "photo_059.jpg", "Plant therapy, horizontal"],
-  ["gallery", "photo_068.jpg", "photo_068.jpg", "Station wagon rain"],
-  ["gallery", "photo_089.jpg", "photo_089.jpg", "Train platform couture"],
-  ["gallery", "photo_004.jpg", "photo_004.jpg", "Mattress in the morning field"],
-  ["gallery", "photo_085.jpg", "photo_085.jpg", "Diner velvet suit"],
-  ["gallery", "photo_066.jpg", "photo_066.jpg", "Lake lantern"],
-  ["gallery", "photo_065.jpg", "photo_065.jpg", "Motel boot morning"],
-  ["gallery", "photo_093.jpg", "photo_093.jpg", "Firelight portrait"],
-  ["gallery", "photo_037.jpg", "photo_037.jpg", "Courtyard doorway portrait"],
-  ["gallery", "photo_028.jpg", "photo_028.jpg", "Cucumber with strap"],
-  ["gallery", "photo_081.jpg", "photo_081.jpg", "Rural bicycle sunset"],
-  ["gallery", "photo_058.jpg", "photo_058.jpg", "Gas station blue hour"],
-  ["gallery", "photo_091.jpg", "photo_091.jpg", "Motel mirror velvet"],
-  ["gallery", "photo_061.jpg", "photo_061.jpg", "Toilet roll on pedestal"],
-  ["gallery", "photo_054.jpg", "photo_054.jpg", "Chair wearing glasses"],
-  ["gallery", "photo_048.jpg", "photo_048.jpg", "Attic room in winter light"],
-  ["gallery", "photo_086.jpg", "photo_086.jpg", "Stairwell column dress"],
-  ["gallery", "photo_056.jpg", "photo_056.jpg", "Ditch bouquet and bicycle wheel"],
-  ["gallery", "photo_007.jpg", "photo_007.jpg", "Espresso before the crash"],
-  ["gallery", "photo_050.jpg", "photo_050.jpg", "Hotel room, morning window"],
-  ["gallery", "photo_062.jpg", "photo_062.jpg", "Orange balanced, no notes"],
-  ["gallery", "photo_077.jpg", "photo_077.jpg", "Coastal rock morning"],
-  ["gallery", "photo_027.jpg", "photo_027.jpg", "Canal railing at dusk"],
-  ["gallery", "photo_044.jpg", "photo_044.jpg", "Key on a cord"],
-  ["gallery", "photo_003.jpg", "photo_003.jpg", "Ferry deck at sunrise"],
-  ["gallery", "photo_005.jpg", "photo_005.jpg", "Bouquet at the night bus stop"],
-  ["gallery", "photo_078.jpg", "photo_078.jpg", "Velvet sofa morning"],
-  ["gallery", "photo_052.jpg", "photo_052.jpg", "Diner window at 2am"],
-  ["gallery", "photo_067.jpg", "photo_067.jpg", "Bathroom mirror flash"],
-  ["gallery", "photo_055.jpg", "photo_055.jpg", "Cherry tomato proof"],
-  ["gallery", "photo_069.jpg", "photo_069.jpg", "Fire clearing"],
-  ["gallery", "photo_001.jpg", "photo_001.jpg", "Mask says maybe"],
-  ["gallery", "photo_073.jpg", "photo_073.jpg", "Attic record light"],
-  ["gallery", "photo_032.jpg", "photo_032.jpg", "Rehearsal room flash"],
-  ["gallery", "photo_071.jpg", "photo_071.jpg", "Clawfoot flash"],
-  ["gallery", "photo_031.jpg", "photo_031.jpg", "Apple at the laundromat"],
-  ["gallery", "photo_076.jpg", "photo_076.jpg", "Headlight asphalt"],
-  ["gallery", "photo_075.jpg", "photo_075.jpg", "Road atlas still life"],
-  ["gallery", "photo_049.jpg", "photo_049.jpg", "Almost hiding"],
-  ["gallery", "photo_057.jpg", "photo_057.jpg", "Corner shop after closing"],
-  ["gallery", "photo_082.jpg", "photo_082.jpg", "Garage motorcycle"],
-  ["gallery", "photo_036.jpg", "photo_036.jpg", "Baguette listening session"],
-  ["gallery", "photo_038.jpg", "photo_038.jpg", "Ladder portrait"],
-  ["gallery", "photo_074.jpg", "photo_074.jpg", "Wooden bus shelter"],
-  ["gallery", "photo_002.jpg", "photo_002.jpg", "Black socks as sculpture"],
-  ["gallery", "photo_060.jpg", "photo_060.jpg", "Friends on the wet side street"],
-  ["gallery", "photo_039.jpg", "photo_039.jpg", "Empty pool at sunset"],
-  ["gallery", "photo_047.jpg", "photo_047.jpg", "Elevator bouquet flash"],
-  ["gallery", "photo_072.jpg", "photo_072.jpg", "River blanket"],
-  ["gallery", "photo_070.jpg", "photo_070.jpg", "Platform dawn"],
-  ["gallery", "photo_083.jpg", "photo_083.jpg", "Rain window portrait"],
-  ["gallery", "photo_042.jpg", "photo_042.jpg", "Back seat by the lake"],
-  ["gallery", "photo_029.jpg", "photo_029.jpg", "Disco ball in the saucepan"],
-  ["gallery", "photo_045.jpg", "photo_045.jpg", "Bathroom haircut flash"],
-  ["gallery", "photo_088.jpg", "photo_088.jpg", "Empty pool fashion"],
-  ["gallery", "photo_041.jpg", "photo_041.jpg", "Gummy bear for dinner"],
-  ["gallery", "photo_026.jpg", "photo_026.jpg", "Party hat afterparty"],
+  ["gallery", "photo_006.jpg", "DSCF0068.JPG", "One sneaker under glass"],
+  ["gallery", "photo_064.jpg", "IMG_4064.JPG", "Desert tail lights"],
+  ["gallery", "photo_063.jpg", "R1-063-14.JPG", "Bicycles under the canal bridge"],
+  ["gallery", "photo_030.jpg", "000030.JPG", "Oranges in the hallway"],
+  ["gallery", "photo_035.jpg", "DSCF1035.JPG", "Rooftop towel after rain"],
+  ["gallery", "photo_053.jpg", "IMG_2053.JPG", "Train compartment morning"],
+  ["gallery", "photo_033.jpg", "R2-033-09.JPG", "Disco ball inspection"],
+  ["gallery", "photo_040.jpg", "000040.JPG", "Balcony coffee morning"],
+  ["gallery", "photo_084.jpg", "DSCF2084.JPG", "Ivory blazer parquet"],
+  ["gallery", "photo_087.jpg", "IMG_5087.JPG", "Rooftop camel coat"],
+  ["gallery", "photo_034.jpg", "R1-034-22.JPG", "Receipt with main character energy"],
+  ["gallery", "photo_043.jpg", "000043.JPG", "Grapefruit in the kitchen sink"],
+  ["gallery", "photo_046.jpg", "DSCF3046.JPG", "Flowers in the bathroom sink"],
+  ["gallery", "photo_079.jpg", "IMG_6079.JPG", "Stairwell keys"],
+  ["gallery", "photo_025.jpg", "R3-025-04.JPG", "Kitchen flash after midnight"],
+  ["gallery", "photo_051.jpg", "000051.JPG", "Hotel floor morning blonde"],
+  ["gallery", "photo_059.jpg", "DSCF4059.JPG", "Plant therapy, horizontal"],
+  ["gallery", "photo_068.jpg", "IMG_7068.JPG", "Station wagon rain"],
+  ["gallery", "photo_089.jpg", "R1-089-18.JPG", "Train platform couture"],
+  ["gallery", "photo_004.jpg", "000004.JPG", "Mattress in the morning field"],
+  ["gallery", "photo_085.jpg", "DSCF5085.JPG", "Diner velvet suit"],
+  ["gallery", "photo_066.jpg", "IMG_8066.JPG", "Lake lantern"],
+  ["gallery", "photo_065.jpg", "R2-065-11.JPG", "Motel boot morning"],
+  ["gallery", "photo_093.jpg", "000093.JPG", "Firelight portrait"],
+  ["gallery", "photo_037.jpg", "DSCF6037.JPG", "Courtyard doorway portrait"],
+  ["gallery", "photo_028.jpg", "IMG_9028.JPG", "Cucumber with strap"],
+  ["gallery", "photo_081.jpg", "R1-081-03.JPG", "Rural bicycle sunset"],
+  ["gallery", "photo_058.jpg", "000058.JPG", "Gas station blue hour"],
+  ["gallery", "photo_091.jpg", "DSCF7091.JPG", "Motel mirror velvet"],
+  ["gallery", "photo_061.jpg", "IMG_1061.JPG", "Toilet roll on pedestal"],
+  ["gallery", "photo_054.jpg", "R3-054-16.JPG", "Chair wearing glasses"],
+  ["gallery", "photo_048.jpg", "000048.JPG", "Attic room in winter light"],
+  ["gallery", "photo_086.jpg", "DSCF8086.JPG", "Stairwell column dress"],
+  ["gallery", "photo_056.jpg", "IMG_3056.JPG", "Ditch bouquet and bicycle wheel"],
+  ["gallery", "photo_007.jpg", "R2-007-01.JPG", "Espresso before the crash"],
+  ["gallery", "photo_050.jpg", "000050.JPG", "Hotel room, morning window"],
+  ["gallery", "photo_062.jpg", "DSCF9062.JPG", "Orange balanced, no notes"],
+  ["gallery", "photo_077.jpg", "IMG_4077.JPG", "Coastal rock morning"],
+  ["gallery", "photo_027.jpg", "R1-027-20.JPG", "Canal railing at dusk"],
+  ["gallery", "photo_044.jpg", "000044.JPG", "Key on a cord"],
+  ["gallery", "photo_003.jpg", "DSCF0103.JPG", "Ferry deck at sunrise"],
+  ["gallery", "photo_005.jpg", "IMG_5005.JPG", "Bouquet at the night bus stop"],
+  ["gallery", "photo_078.jpg", "R3-078-08.JPG", "Velvet sofa morning"],
+  ["gallery", "photo_052.jpg", "000052.JPG", "Diner window at 2am"],
+  ["gallery", "photo_067.jpg", "DSCF1167.JPG", "Bathroom mirror flash"],
+  ["gallery", "photo_055.jpg", "IMG_6055.JPG", "Cherry tomato proof"],
+  ["gallery", "photo_069.jpg", "R2-069-13.JPG", "Fire clearing"],
+  ["gallery", "photo_001.jpg", "000001.JPG", "Mask says maybe"],
+  ["gallery", "photo_073.jpg", "DSCF2173.JPG", "Attic record light"],
+  ["gallery", "photo_032.jpg", "IMG_7032.JPG", "Rehearsal room flash"],
+  ["gallery", "photo_071.jpg", "R1-071-06.JPG", "Clawfoot flash"],
+  ["gallery", "photo_031.jpg", "000031.JPG", "Apple at the laundromat"],
+  ["gallery", "photo_076.jpg", "DSCF3176.JPG", "Headlight asphalt"],
+  ["gallery", "photo_075.jpg", "IMG_8075.JPG", "Road atlas still life"],
+  ["gallery", "photo_049.jpg", "R3-049-19.JPG", "Almost hiding"],
+  ["gallery", "photo_057.jpg", "000057.JPG", "Corner shop after closing"],
+  ["gallery", "photo_082.jpg", "DSCF4182.JPG", "Garage motorcycle"],
+  ["gallery", "photo_036.jpg", "IMG_9036.JPG", "Baguette listening session"],
+  ["gallery", "photo_038.jpg", "R2-038-05.JPG", "Ladder portrait"],
+  ["gallery", "photo_074.jpg", "000074.JPG", "Wooden bus shelter"],
+  ["gallery", "photo_002.jpg", "DSCF5202.JPG", "Black socks as sculpture"],
+  ["gallery", "photo_060.jpg", "IMG_0060.JPG", "Friends on the wet side street"],
+  ["gallery", "photo_039.jpg", "R1-039-17.JPG", "Empty pool at sunset"],
+  ["gallery", "photo_047.jpg", "000047.JPG", "Elevator bouquet flash"],
+  ["gallery", "photo_072.jpg", "DSCF6272.JPG", "River blanket"],
+  ["gallery", "photo_070.jpg", "IMG_1070.JPG", "Platform dawn"],
+  ["gallery", "photo_083.jpg", "R3-083-12.JPG", "Rain window portrait"],
+  ["gallery", "photo_042.jpg", "000042.JPG", "Back seat by the lake"],
+  ["gallery", "photo_029.jpg", "DSCF7229.JPG", "Disco ball in the saucepan"],
+  ["gallery", "photo_045.jpg", "IMG_2045.JPG", "Bathroom haircut flash"],
+  ["gallery", "photo_088.jpg", "R2-088-07.JPG", "Empty pool fashion"],
+  ["gallery", "photo_041.jpg", "000041.JPG", "Gummy bear for dinner"],
+  ["gallery", "photo_026.jpg", "DSCF8226.JPG", "Party hat afterparty"],
 ];
 
 var photos = galleryPhotos.map(([folder, file, caption, title], index) => {
@@ -450,6 +446,9 @@ export default {
       photos,
       activePhotoIndex: null,
       activeSeriesIndex: 0,
+      photoOrientations: {},
+      isLargeViewEnabled: true,
+      largeViewMediaQuery: null,
     };
   },
   computed: {
@@ -468,19 +467,45 @@ export default {
     },
   },
   mounted() {
+    this.largeViewMediaQuery = window.matchMedia("(min-width: 769px)");
+    this.updateLargeViewState();
+    this.largeViewMediaQuery.addEventListener("change", this.updateLargeViewState);
     window.addEventListener("keydown", this.handleKeydown);
   },
   beforeUnmount() {
+    this.largeViewMediaQuery?.removeEventListener("change", this.updateLargeViewState);
     window.removeEventListener("keydown", this.handleKeydown);
   },
   methods: {
     openPhoto(photo) {
+      if (!this.isLargeViewEnabled) {
+        return;
+      }
+
       this.activePhotoIndex = this.photos.findIndex((item) => item.file === photo.file);
       this.activeSeriesIndex = 0;
     },
     closePhoto() {
       this.activePhotoIndex = null;
       this.activeSeriesIndex = 0;
+    },
+    photoOrientationClass(photo) {
+      return this.photoOrientations[photo.id] ? `photography-gallery__item--${this.photoOrientations[photo.id]}` : "";
+    },
+    setPhotoOrientation(photo, event) {
+      var image = event.target;
+      var orientation = image.naturalWidth > image.naturalHeight ? "landscape" : "portrait";
+      this.photoOrientations = {
+        ...this.photoOrientations,
+        [photo.id]: orientation,
+      };
+    },
+    updateLargeViewState() {
+      this.isLargeViewEnabled = this.largeViewMediaQuery?.matches ?? true;
+
+      if (!this.isLargeViewEnabled) {
+        this.closePhoto();
+      }
     },
     showPreviousPhoto() {
       if (this.activePhotoIndex === null) {
@@ -509,7 +534,7 @@ export default {
       this.activeSeriesIndex = 0;
     },
     handleKeydown(event) {
-      if (this.activePhotoIndex === null) {
+      if (!this.isLargeViewEnabled || this.activePhotoIndex === null) {
         return;
       }
 
@@ -545,6 +570,10 @@ export default {
     filter 520ms ease;
 }
 
+.photography-gallery__item--landscape .photography-gallery__thumb {
+  align-items: flex-end;
+}
+
 .photography-gallery__bar {
   background: var(--page-background);
   box-shadow: none !important;
@@ -564,6 +593,7 @@ export default {
 
 .photography-gallery__caption {
   text-wrap: balance;
+  align-self: start;
 }
 
 .photography-gallery__number {
@@ -692,6 +722,29 @@ export default {
   .photography-gallery__item:nth-child(6n + 4),
   .photography-gallery__item:nth-child(6n + 5) {
     margin-top: 0;
+  }
+
+  .photography-gallery__thumb {
+    cursor: default;
+  }
+
+  .photography-gallery__thumb:hover,
+  .photography-gallery__thumb:focus-visible {
+    transform: none;
+  }
+
+  .photography-gallery__thumb:hover img,
+  .photography-gallery__thumb:focus-visible img {
+    filter: saturate(0.92) contrast(0.98);
+  }
+
+  .photography-gallery__caption span span,
+  .photography-gallery__caption span span:last-child {
+    opacity: 1;
+  }
+
+  .photography-gallery__caption .absolute {
+    display: none;
   }
 
   .photography-gallery__modal-arrow {

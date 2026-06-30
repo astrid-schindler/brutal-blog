@@ -83,6 +83,7 @@ var postImages = computed(() => {
 
   return currentPost.imageUrls?.length ? currentPost.imageUrls : [currentPost.imageUrl].filter(Boolean);
 });
+
 </script>
 
 <style scoped>
@@ -195,6 +196,7 @@ var postImages = computed(() => {
   .project-detail__content {
     text-align: center;
   }
+
 }
 
 @media (max-width: 768px) {
@@ -219,4 +221,5 @@ var postImages = computed(() => {
     max-height: min(72svh, 34rem);
   }
 }
+
 </style>
