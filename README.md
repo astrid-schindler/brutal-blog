@@ -1,4 +1,4 @@
-# Arlowe Photography Portfolio
+# Brutal Blog
 
 **Language / Sprache:** [Deutsch](#deutsch) | [English](#english)
 
@@ -6,7 +6,7 @@
 
 ## Deutsch
 
-Arlowe Photography Portfolio ist ein Vue-3-Portfolio mit Blog, Photography Gallery, About-, Contact-, Services-, Login- und Video-Route. Die Seite ist als reduzierte, bildstarke Portfolio-Erfahrung aufgebaut: wenig externes CSS, Tailwind-Utilities in den Komponenten, zentrale Design-Tokens in `src/index.css` und `tailwind.config.js`.
+Brutal Blog ist ein Vue-3-Portfolio mit Blog, Photography Gallery, About-, Contact-, Services-, Login- und Video-Route. Die Seite ist als reduzierte, bildstarke Portfolio-Erfahrung aufgebaut: wenig externes CSS, Tailwind-Utilities in den Komponenten, zentrale Design-Tokens in `src/index.css` und `tailwind.config.js`.
 
 Code, Konzept und Projektverantwortung: **Astrid Schindler**.
 
@@ -307,7 +307,7 @@ Temporäre Arbeitsdaten wie `tmp/`, `node_modules/` und `dist/` gehören nicht i
 
 ## English
 
-Arlowe Photography Portfolio is a Vue 3 portfolio with a blog, photography gallery, about, contact, services, login, and video route. The site is designed as a reduced, image-driven portfolio experience: minimal external CSS, Tailwind utilities inside Vue components, and centralized design tokens in `src/index.css` and `tailwind.config.js`.
+Brutal Blog is a Vue 3 portfolio with a blog, photography gallery, about, contact, services, login, and video route. The site is designed as a reduced, image-driven portfolio experience: minimal external CSS, Tailwind utilities inside Vue components, and centralized design tokens in `src/index.css` and `tailwind.config.js`.
 
 Code, concept, and project ownership: **Astrid Schindler**.
 
