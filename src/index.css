@@ -1,0 +1,575 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --layout-max-width: 100%;
+    --layout-margin: 0px;
+    --layout-gap: clamp(0.75rem, 1.2vw, 1rem);
+    --layout-columns: 12;
+    --font-mono-serif: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-display-mono: var(--font-mono-serif);
+    --page-background: #fffaf4;
+    --text-color: #44403c;
+    --hero-navigation-color: #44403c;
+    --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --motion-snap: cubic-bezier(0.19, 1, 0.22, 1);
+    --motion-fast: 220ms;
+    --motion-medium: 560ms;
+    --motion-slow: 900ms;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  html {
+    background: var(--page-background);
+    overflow-x: clip;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--page-background);
+    color: var(--text-color);
+    font-family: var(--font-mono-serif);
+    overflow-x: clip;
+  }
+
+  html[data-theme="dark"] {
+    --page-background: #050a0b;
+    --text-color: #bbbfc3;
+    --hero-navigation-color: #bbbfc3;
+    background: var(--page-background);
+    color-scheme: dark;
+  }
+
+  html[data-theme="dark"],
+  html[data-theme="dark"] body,
+  html[data-theme="dark"] #app {
+    background: var(--page-background);
+  }
+
+  html[data-theme="dark"] .app-shell,
+  html[data-theme="dark"] .app-shell * {
+    color: var(--text-color) !important;
+  }
+
+  html[data-theme="dark"] .app-shell [stroke="#44403c"] {
+    stroke: currentColor !important;
+  }
+
+  html[data-theme="dark"] .app-shell [fill="#44403c"] {
+    fill: currentColor !important;
+  }
+
+  @supports not (overflow: clip) {
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  }
+
+  *,
+  ::before,
+  ::after {
+    color: var(--text-color);
+    font-family: var(--font-mono-serif);
+    font-weight: 300;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    border-radius: 0;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    transition:
+      color 220ms ease,
+      border-color 220ms ease,
+      background-color 220ms ease,
+      opacity 220ms ease,
+      transform 260ms var(--motion-ease);
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  img,
+  video,
+  svg {
+    transition:
+      opacity 360ms ease,
+      filter 360ms ease,
+      transform 520ms var(--motion-ease);
+  }
+
+  ::selection {
+    background: var(--page-background);
+    color: var(--text-color);
+  }
+}
+
+@layer components {
+  .chrome-reset,
+  .chrome-reset * {
+    @apply border-0 bg-transparent font-mono font-light normal-case tracking-normal shadow-none;
+    color: currentColor;
+    animation: none;
+  }
+
+  .hero-tone {
+    color: var(--hero-navigation-color);
+  }
+
+  .page-shell {
+    @apply mx-auto w-full max-w-page px-page-x py-page-y;
+  }
+
+  .page-heading-left {
+    @apply mx-auto justify-start p-0 text-left;
+  }
+
+  .page-heading-left .section-heading {
+    @apply p-0;
+  }
+
+  .section-stack {
+    @apply pt-section-gap;
+  }
+
+  .split-grid {
+    @apply grid grid-cols-[minmax(15rem,0.82fr)_minmax(18rem,1fr)] items-center gap-[clamp(2.5rem,8vw,7rem)];
+  }
+
+  .contact-grid {
+    @apply grid grid-cols-[minmax(16rem,0.82fr)_minmax(18rem,1fr)] items-start gap-[clamp(2.5rem,8vw,7rem)] pt-section-gap text-[0.78rem] font-light;
+  }
+
+  .body-copy {
+    @apply max-w-readable font-mono text-[0.78rem] font-light leading-[1.9] text-ink normal-case;
+  }
+
+  .caption-copy {
+    @apply mt-2 font-mono text-[0.72rem] leading-normal text-ink;
+  }
+
+  .content-card {
+    @apply w-full font-mono text-[0.78rem] font-light leading-[1.9] text-ink;
+  }
+
+  .eyebrow-label {
+    @apply mt-5 text-[0.72rem] uppercase tracking-[0.12em];
+  }
+
+  .floating-field {
+    @apply relative z-0 mb-0 w-full;
+  }
+
+  .floating-control {
+    @apply block w-full appearance-none bg-transparent px-3 py-3 text-sm font-light tracking-normal text-ink focus:outline-none focus:ring-0;
+  }
+
+  .floating-label {
+    @apply absolute left-2 top-3 origin-[0] -translate-y-7 scale-75 bg-transparent px-1 text-xs font-light tracking-normal text-ink duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-7 peer-focus:scale-75 max-md:[overflow-wrap:anywhere];
+  }
+
+  .inline-icon {
+    @apply inline-block align-[-0.08em];
+  }
+
+  .app-shell {
+    @apply min-h-screen bg-page text-ink;
+  }
+
+  .minimal-home > section {
+    background: var(--page-background);
+    font-family: inherit;
+  }
+
+  .minimal-home * {
+    font-family: inherit;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    letter-spacing: 0;
+  }
+
+  .minimal-home p,
+  .minimal-home a,
+  .minimal-home button,
+  .minimal-home input,
+  .minimal-home textarea,
+  .minimal-home [class]:not(.home-hero) {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: var(--text-color);
+    text-transform: none !important;
+  }
+
+  .minimal-home [class]:not(input):not(textarea):not(button) {
+    border: 0 !important;
+  }
+
+  .minimal-home a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .app-shell a:hover,
+  .app-shell a:focus-visible,
+  .app-shell button:hover,
+  .app-shell button:focus-visible {
+    transform: translateY(-0.16rem);
+  }
+
+  .app-shell img:hover,
+  .app-shell video:hover {
+    transform: translateY(-0.32rem) scale(1.018);
+    filter: contrast(1.05) saturate(0.96);
+  }
+
+  .app-shell input:focus,
+  .app-shell textarea:focus,
+  .app-shell select:focus {
+    transform: translateY(-0.08rem);
+  }
+
+  .motion-item {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(0.85rem) scale(0.992);
+    transition:
+      opacity 680ms ease,
+      filter 680ms ease,
+      transform 680ms var(--motion-ease);
+    will-change: opacity, filter, transform;
+  }
+
+  .motion-item.is-scroll-up {
+    transform: translateY(-0.75rem) scale(0.992);
+  }
+
+  .motion-item.is-scroll-down {
+    transform: translateY(0.85rem) scale(0.992);
+  }
+
+  .app-shell section.motion-item,
+  .app-shell .minimal-home.motion-item,
+  .app-shell .layout-grid.motion-item,
+  .app-shell .layout-section.motion-item,
+  .motion-item.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+
+  .motion-item:nth-child(2n) {
+    transition-delay: 85ms;
+  }
+
+  .motion-item:nth-child(3n) {
+    transition-delay: 170ms;
+  }
+
+  .motion-item:nth-child(4n) {
+    transition-delay: 245ms;
+  }
+
+  .app-shell a {
+    position: relative;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .app-shell a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.18em;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--motion-medium) var(--motion-snap);
+  }
+
+  .app-shell a:hover::after,
+  .app-shell a:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .app-shell button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-shell button::after {
+    content: "";
+    position: absolute;
+    inset: -40% -20%;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 0 42%, rgba(68, 64, 60, 0.12) 48% 52%, transparent 58% 100%);
+    transform: translateX(-130%);
+    transition: transform 720ms var(--motion-snap);
+  }
+
+  .app-shell button:hover::after,
+  .app-shell button:focus-visible::after {
+    transform: translateX(130%);
+  }
+
+  .app-shell figure,
+  .app-shell article,
+  .app-shell .text-panel {
+    transform-origin: center;
+  }
+
+  .app-shell figure:hover,
+  .app-shell article:hover,
+  .app-shell .text-panel:hover {
+    transform: translateY(-0.28rem);
+  }
+
+  .layout-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--layout-columns), minmax(0, 1fr));
+    column-gap: var(--layout-gap);
+    row-gap: var(--layout-gap);
+    width: min(calc(100% - (2 * var(--layout-margin))), var(--layout-max-width));
+    margin-inline: auto;
+    min-width: 0;
+  }
+
+  .layout-section {
+    width: min(calc(100% - (2 * var(--layout-margin))), var(--layout-max-width));
+    margin-inline: auto;
+    min-width: 0;
+  }
+
+  .layout-grid > * {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .layout-full {
+    grid-column: 1 / -1;
+  }
+
+  .layout-main {
+    grid-column: 3 / span 8;
+  }
+
+  .layout-wide {
+    grid-column: 2 / span 10;
+  }
+
+  .layout-half {
+    grid-column: span 6;
+  }
+
+  .layout-third {
+    grid-column: span 4;
+  }
+
+  .layout-two-thirds {
+    grid-column: span 8;
+  }
+
+  .bleed {
+    width: 100%;
+    max-width: none;
+  }
+
+  .text-panel {
+    background: transparent;
+    border: 0;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    line-height: 1.85;
+    transition: transform 360ms var(--motion-ease);
+  }
+
+  .app-shell section::selection {
+    background: var(--page-background);
+    color: var(--text-color);
+  }
+
+  .app-shell section {
+    position: relative;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+
+    .motion-item {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    :root {
+      --layout-max-width: 100%;
+      --layout-margin: clamp(1rem, 4vw, 2rem);
+      --layout-columns: 8;
+    }
+
+    .layout-grid {
+      justify-items: center;
+      width: min(calc(100% - (2 * var(--layout-margin))), 48rem);
+    }
+
+    .layout-section {
+      width: min(calc(100% - (2 * var(--layout-margin))), 48rem);
+    }
+
+    .layout-main {
+      grid-column: 2 / span 6;
+      width: min(100%, 34rem);
+      margin-inline: auto;
+    }
+
+    .layout-wide,
+    .layout-two-thirds {
+      grid-column: 1 / -1;
+      width: min(100%, 42rem);
+      margin-inline: auto;
+    }
+
+    .layout-half,
+    .layout-third {
+      grid-column: span 4;
+      width: min(100%, 34rem);
+      margin-inline: auto;
+    }
+
+    .layout-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .minimal-home > section {
+      justify-items: center;
+    }
+
+    .minimal-home .layout-grid {
+      width: min(calc(100% - 2rem), 48rem);
+      margin-inline: auto;
+      justify-items: center;
+    }
+
+    .minimal-home .layout-main,
+    .minimal-home .layout-wide,
+    .minimal-home .layout-half,
+    .minimal-home .layout-third,
+    .minimal-home .layout-two-thirds {
+      grid-column: 1 / -1;
+      width: min(100%, 34rem);
+      margin-inline: auto;
+    }
+
+    .minimal-home .text-panel {
+      width: min(100%, 34rem);
+      margin-inline: auto;
+    }
+
+    .page-shell {
+      @apply max-w-[42rem] pt-[clamp(4.5rem,11vw,6rem)];
+    }
+
+    .page-heading-left {
+      @apply justify-center text-center;
+    }
+
+    .split-grid,
+    .contact-grid {
+      @apply grid-cols-1 justify-items-center gap-y-8 pt-[clamp(2.25rem,7vw,4rem)];
+    }
+
+    .body-copy,
+    .content-card {
+      @apply mx-auto w-full max-w-compact text-center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --layout-max-width: 100%;
+      --layout-margin: 1rem;
+      --layout-gap: 0.75rem;
+      --layout-columns: 4;
+    }
+
+    .layout-main,
+    .layout-wide,
+    .layout-half,
+    .layout-third,
+    .layout-two-thirds {
+      grid-column: 1 / -1;
+      width: min(100%, 34rem);
+      margin-inline: auto;
+    }
+
+    .layout-section {
+      width: min(calc(100% - (2 * var(--layout-margin))), 34rem);
+      text-align: center;
+    }
+
+    .minimal-home > section {
+      width: 100%;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    .minimal-home .layout-grid {
+      width: min(calc(100% - 2rem), 34rem);
+      row-gap: 2rem;
+    }
+
+    .minimal-home .text-panel {
+      width: 100%;
+    }
+
+    .page-shell {
+      @apply px-4;
+    }
+
+    .body-copy,
+    .content-card {
+      @apply w-full;
+    }
+  }
+}
