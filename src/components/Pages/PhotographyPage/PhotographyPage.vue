@@ -1,6 +1,6 @@
 <template>
-  <div class="minimal-home relative grid min-h-screen w-full bg-page font-mono text-ink">
-    <section id="photography" class="w-full pt-[clamp(4.25rem,8vw,6rem)]">
+  <div>
+    <section id="photography">
       <photography-gallery></photography-gallery>
     </section>
   </div>

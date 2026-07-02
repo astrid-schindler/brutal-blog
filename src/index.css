@@ -436,6 +436,7 @@
     .motion-item {
       opacity: 1 !important;
       transform: none !important;
+      filter: none !important;
     }
   }
 
