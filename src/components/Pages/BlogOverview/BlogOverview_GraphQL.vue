@@ -1,6 +1,6 @@
 <template>
   <main class="projects-page">
-    <TheHeading class="projects-page__heading" the-headline="BLOG"></TheHeading>
+    <TheHeading class="projects-page__heading" the-headline="blog"></TheHeading>
 
     <p v-if="isFetching" class="projects-page__state">Loading blog...</p>
     <p v-else-if="error" class="projects-page__state">Blog is currently unavailable.</p>
@@ -146,6 +146,7 @@ var posts = computed(() => {
   font-size: clamp(1.4rem, 3vw, 2.6rem);
   font-weight: 300;
   line-height: 1.08;
+  text-transform: lowercase;
 }
 
 .project-card__meta {

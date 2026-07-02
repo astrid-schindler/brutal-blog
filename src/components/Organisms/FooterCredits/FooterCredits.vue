@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="chrome-reset pointer-events-none text-ink transition-colors duration-200"
+    class="chrome-reset pointer-events-none lowercase text-ink transition-colors duration-200"
     :class="{'hero-tone': isHeroFooter}"
   >
     <p class="pointer-events-auto fixed bottom-[clamp(1rem,3vw,2rem)] left-[clamp(1rem,3vw,2rem)] z-50 text-sm max-md:text-xs max-md:leading-6 max-[480px]:text-[0.65rem] [&_a]:no-underline hover:[&_a]:underline focus-visible:[&_a]:underline [&_a]:underline-offset-[0.18em]">
@@ -8,7 +8,7 @@
       <a href="#"><font-awesome-icon class="pl-6 max-[360px]:pl-4" icon="fa-brands fa-twitter" /></a>
       <a class="max-[360px]:hidden" href="#"><font-awesome-icon class="pl-6" icon="fa-brands fa-behance" /></a>
       <a class="max-[360px]:hidden" href="#"><font-awesome-icon class="pl-6" icon="fa-solid fa-envelope" /></a>
-      <span class="pl-2 text-xs max-lg:hidden"> | © 2026 by Arlowe Santoro | All rights reserved.</span>
+      <span class="pl-2 text-xs max-lg:hidden"> | © 2026 by arlowe santoro | all rights reserved.</span>
     </p>
 
     <aside
@@ -16,7 +16,7 @@
       aria-label="GitHub project link"
     >
       <a
-        class="github-download-card__link"
+        class="github-download-card__link normal-case"
         href="https://github.com/astrid-schindler/brutal-blog"
         target="_blank"
         rel="noopener noreferrer"
@@ -103,6 +103,7 @@ export default {
   line-height: 1.1;
   text-decoration: underline;
   text-underline-offset: 0.22em;
+  text-transform: none;
 }
 
 .github-download-card__link::after {

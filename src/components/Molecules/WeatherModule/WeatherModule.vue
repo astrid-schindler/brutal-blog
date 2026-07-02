@@ -1,6 +1,6 @@
 <template>
   <p
-    class="chrome-reset pointer-events-auto fixed bottom-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] z-50 px-0 py-0 text-xs text-ink transition-colors duration-200 [writing-mode:vertical-rl] max-md:text-[0.65rem] max-[480px]:hidden"
+    class="chrome-reset pointer-events-auto fixed bottom-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] z-50 px-0 py-0 text-xs lowercase text-ink transition-colors duration-200 [writing-mode:vertical-rl] max-md:text-[0.65rem] max-[480px]:hidden"
     :class="{'hero-tone': isHeroWeather}"
   >
     {{ location }} - {{ currentTemperature }} - {{ currentTime }}<span>:</span>{{ currentMinutes }}<span>:</span>{{ currentSeconds }} {{ currentTimeZone }} - {{ currentCondition }}
@@ -104,7 +104,7 @@ export default {
   props: {
     location: {
       type: String,
-      default: "Rome, Italy",
+      default: "rome, italy",
     },
     temperature: {
       type: String,

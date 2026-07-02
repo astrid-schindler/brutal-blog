@@ -18,8 +18,7 @@ var routes = [
   },
   {
     path: '/blog',
-    name: 'blog',
-    component: BlogOverview_GraphQL
+    redirect: '/projects'
   },
   {
     path: '/photography',
@@ -28,7 +27,8 @@ var routes = [
   },
   {
     path: '/projects',
-    redirect: '/blog'
+    name: 'projects',
+    component: BlogOverview_GraphQL
   },
   {
     path: '/blogpost/:id',

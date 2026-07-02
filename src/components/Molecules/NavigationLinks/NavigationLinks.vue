@@ -20,11 +20,11 @@ export default {
     items: {
       type: Array,
       default: () => [
-        {label: "Home", target: "home"},
-        {label: "About", target: "about"},
-        {label: "Photography", target: "photography"},
-        {label: "Blog", target: "blog"},
-        {label: "Contact", target: "contact"},
+        {label: "home", target: "home"},
+        {label: "about", target: "about"},
+        {label: "photography", target: "photography"},
+        {label: "projects", target: "projects"},
+        {label: "contact", target: "contact"},
       ],
     },
   },

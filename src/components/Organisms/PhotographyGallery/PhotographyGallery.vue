@@ -1,10 +1,10 @@
 <template>
   <div class="photography-gallery relative min-h-[100svh] overflow-hidden text-stone-700">
     <div class="photography-gallery__bar sticky top-[clamp(3.25rem,6vw,4.5rem)] z-30 grid w-full grid-cols-12 gap-x-[var(--layout-gap)] p-5 text-[clamp(0.74rem,1.68vw,1.51rem)] font-light leading-none text-stone-700 max-lg:grid-cols-8 max-lg:text-[clamp(0.67rem,2vw,1.17rem)] max-md:grid-cols-4 max-md:px-4 max-md:text-[0.67rem]">
-      <p class="col-span-12 pl-1 max-lg:col-span-8 max-md:col-span-4">
-        <span class="block text-[clamp(1.1rem,2.5vw,2.25rem)] max-lg:text-[clamp(1rem,3vw,1.75rem)] max-md:text-base">Photography</span>
+      <p class="col-span-12 justify-self-start pl-1 text-left max-lg:col-span-8 max-md:col-span-4">
+        <span class="block text-[clamp(1.1rem,2.5vw,2.25rem)] max-lg:text-[clamp(1rem,3vw,1.75rem)] max-md:text-base">photography</span>
         <span class="block pt-1 text-[0.55rem] font-light leading-tight tracking-normal max-md:text-[0.5rem]">
-          Personal Archive / {{ photos.length }} Images
+          personal archive / {{ photos.length }} images
         </span>
       </p>
     </div>
@@ -15,12 +15,12 @@
       <article
         v-for="photo in photos"
         :key="photo.id"
-        class="photography-gallery__item group relative grid min-h-[clamp(17rem,32vw,27rem)] content-center"
+        class="photography-gallery__item group relative grid content-center"
         :class="photoOrientationClass(photo)"
       >
         <button
           type="button"
-          class="photography-gallery__thumb relative z-10 flex h-[clamp(16rem,30vw,26rem)] w-full cursor-pointer items-center justify-center p-0 transition-opacity duration-150 hover:opacity-75 focus-visible:outline-none max-md:h-[clamp(18rem,68vw,29rem)] max-sm:h-[min(74svh,27rem)]"
+          class="photography-gallery__thumb relative z-10 flex w-full cursor-pointer items-center justify-center p-0 focus-visible:outline-none"
           @click="openPhoto(photo)"
         >
           <img
@@ -34,17 +34,14 @@
 
         <button
           type="button"
-          class="photography-gallery__caption pointer-events-none z-20 mt-5 grid w-full grid-cols-[auto_1fr] gap-x-2 text-left text-xs font-light leading-tight text-stone-700 transition-opacity duration-100 max-md:mt-3 max-md:text-[0.72rem]"
+          class="photography-gallery__caption pointer-events-none z-20 mt-5 grid w-full grid-cols-[auto_1fr] gap-x-2 text-left text-xs font-light leading-tight text-stone-700 max-md:mt-3 max-md:text-[0.72rem]"
           tabindex="-1"
           aria-hidden="true"
         >
           <span class="photography-gallery__number">({{ photo.id }})</span>
           <span class="relative min-w-0 break-words">
-            <span class="transition-opacity duration-100 group-hover:opacity-0">
+            <span>
               {{ photo.caption }}
-            </span>
-            <span class="absolute left-0 top-0 opacity-0 transition-opacity duration-100 group-hover:opacity-100">
-              View Photo
             </span>
           </span>
         </button>
@@ -54,32 +51,25 @@
     <div
       v-if="activePhoto"
       class="photography-gallery__modal fixed inset-0 z-[70] grid place-items-center"
+      :class="{'photography-gallery__modal--with-series': activePhoto.series.length > 1}"
       role="dialog"
       aria-modal="true"
       :aria-label="activePhoto.caption"
       @click.self="closePhoto"
     >
-      <button
-        type="button"
-        class="photography-gallery__modal-control photography-gallery__modal-close fixed bottom-5 left-1/2 z-[80] px-3 py-2 text-xs font-light uppercase text-stone-700 lg:bottom-auto lg:left-5 lg:top-5"
-        @click="closePhoto"
-      >
-        (Close)
-      </button>
-
       <p class="fixed left-5 top-5 z-[80] hidden text-xs font-light leading-tight text-stone-700 lg:block">
         ({{ activePhoto.id }}) {{ activePhoto.caption }}{{ activeSeriesLabel }}
       </p>
 
       <button
         type="button"
-        class="photography-gallery__modal-image-button h-[min(76svh,54rem)] w-[min(calc(100%-2rem),82rem)] max-md:h-[min(70svh,calc(100svh-9rem))] lg:w-[min(76vw,76rem)]"
+        class="photography-gallery__modal-image-button"
         @click="closePhoto"
       >
         <img
           :src="activeSlide.src"
           :alt="activeSlide.alt"
-          class="photography-gallery__modal-image h-full w-full object-contain"
+          class="photography-gallery__modal-image"
         >
       </button>
 
@@ -332,6 +322,82 @@ var attachedSeries = {
   },
 };
 
+var photoOrientationsByFile = {
+  "gallery/photo_006.jpg": "landscape",
+  "gallery/photo_064.jpg": "portrait",
+  "gallery/photo_063.jpg": "landscape",
+  "gallery/photo_030.jpg": "portrait",
+  "gallery/photo_035.jpg": "portrait",
+  "gallery/photo_053.jpg": "portrait",
+  "gallery/photo_033.jpg": "landscape",
+  "gallery/photo_040.jpg": "portrait",
+  "gallery/photo_084.jpg": "portrait",
+  "gallery/photo_087.jpg": "landscape",
+  "gallery/photo_034.jpg": "landscape",
+  "gallery/photo_043.jpg": "portrait",
+  "gallery/photo_046.jpg": "portrait",
+  "gallery/photo_079.jpg": "portrait",
+  "gallery/photo_025.jpg": "landscape",
+  "gallery/photo_051.jpg": "portrait",
+  "gallery/photo_059.jpg": "landscape",
+  "gallery/photo_068.jpg": "landscape",
+  "gallery/photo_089.jpg": "portrait",
+  "gallery/photo_004.jpg": "landscape",
+  "gallery/photo_085.jpg": "portrait",
+  "gallery/photo_066.jpg": "portrait",
+  "gallery/photo_065.jpg": "landscape",
+  "gallery/photo_093.jpg": "landscape",
+  "gallery/photo_037.jpg": "portrait",
+  "gallery/photo_028.jpg": "landscape",
+  "gallery/photo_081.jpg": "landscape",
+  "gallery/photo_058.jpg": "landscape",
+  "gallery/photo_091.jpg": "portrait",
+  "gallery/photo_061.jpg": "landscape",
+  "gallery/photo_054.jpg": "portrait",
+  "gallery/photo_048.jpg": "portrait",
+  "gallery/photo_086.jpg": "portrait",
+  "gallery/photo_056.jpg": "landscape",
+  "gallery/photo_007.jpg": "landscape",
+  "gallery/photo_050.jpg": "portrait",
+  "gallery/photo_062.jpg": "landscape",
+  "gallery/photo_077.jpg": "portrait",
+  "gallery/photo_027.jpg": "portrait",
+  "gallery/photo_044.jpg": "portrait",
+  "gallery/photo_003.jpg": "landscape",
+  "gallery/photo_005.jpg": "landscape",
+  "gallery/photo_078.jpg": "landscape",
+  "gallery/photo_052.jpg": "landscape",
+  "gallery/photo_067.jpg": "portrait",
+  "gallery/photo_055.jpg": "landscape",
+  "gallery/photo_069.jpg": "portrait",
+  "gallery/photo_001.jpg": "landscape",
+  "gallery/photo_073.jpg": "portrait",
+  "gallery/photo_032.jpg": "portrait",
+  "gallery/photo_071.jpg": "portrait",
+  "gallery/photo_031.jpg": "portrait",
+  "gallery/photo_076.jpg": "landscape",
+  "gallery/photo_075.jpg": "landscape",
+  "gallery/photo_049.jpg": "landscape",
+  "gallery/photo_057.jpg": "portrait",
+  "gallery/photo_082.jpg": "portrait",
+  "gallery/photo_036.jpg": "landscape",
+  "gallery/photo_038.jpg": "portrait",
+  "gallery/photo_074.jpg": "portrait",
+  "gallery/photo_002.jpg": "landscape",
+  "gallery/photo_060.jpg": "portrait",
+  "gallery/photo_039.jpg": "landscape",
+  "gallery/photo_047.jpg": "portrait",
+  "gallery/photo_072.jpg": "landscape",
+  "gallery/photo_070.jpg": "landscape",
+  "gallery/photo_083.jpg": "portrait",
+  "gallery/photo_042.jpg": "landscape",
+  "gallery/photo_029.jpg": "landscape",
+  "gallery/photo_045.jpg": "landscape",
+  "gallery/photo_088.jpg": "portrait",
+  "gallery/photo_041.jpg": "landscape",
+  "gallery/photo_026.jpg": "landscape",
+};
+
 var galleryPhotos = [
   ["gallery", "photo_006.jpg", "DSCF0068.JPG", "One sneaker under glass"],
   ["gallery", "photo_064.jpg", "IMG_4064.JPG", "Desert tail lights"],
@@ -435,6 +501,7 @@ var photos = galleryPhotos.map(([folder, file, caption, title], index) => {
     title,
     src,
     alt,
+    orientation: photoOrientationsByFile[photoFile],
     series,
   };
 });
@@ -490,7 +557,8 @@ export default {
       this.activeSeriesIndex = 0;
     },
     photoOrientationClass(photo) {
-      return this.photoOrientations[photo.id] ? `photography-gallery__item--${this.photoOrientations[photo.id]}` : "";
+      var orientation = this.photoOrientations[photo.id] || photo.orientation;
+      return orientation ? `photography-gallery__item--${orientation}` : "";
     },
     setPhotoOrientation(photo, event) {
       var image = event.target;
@@ -561,16 +629,19 @@ export default {
 
 <style scoped>
 .photography-gallery__thumb {
+  aspect-ratio: 2 / 3;
   border: 0;
   background: transparent;
   box-shadow: none;
-  transition:
-    opacity 220ms ease,
-    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 520ms ease;
+}
+
+.photography-gallery__item--portrait .photography-gallery__thumb {
+  width: min(100%, clamp(13rem, 22vw, 19rem));
+  justify-self: center;
 }
 
 .photography-gallery__item--landscape .photography-gallery__thumb {
+  aspect-ratio: 3 / 2;
   align-items: flex-end;
 }
 
@@ -602,15 +673,16 @@ export default {
 
 .photography-gallery__thumb img {
   display: block;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   filter: saturate(0.92) contrast(0.98);
+  object-fit: contain;
   transform-origin: center;
 }
 
 .photography-gallery__thumb:hover,
 .photography-gallery__thumb:focus-visible {
   opacity: 1;
-  transform: scale(1.025);
 }
 
 .photography-gallery__thumb:hover img,
@@ -622,12 +694,11 @@ export default {
   background: var(--page-background);
 }
 
-.photography-gallery__modal,
-.photography-gallery__modal * {
-  transform: none !important;
-}
-
 .photography-gallery__modal-image-button {
+  display: grid;
+  width: min(calc(100vw - 2rem), 82rem);
+  max-height: calc(100svh - 6rem);
+  place-items: center;
   border: 0;
   background: transparent;
   box-shadow: none;
@@ -635,6 +706,11 @@ export default {
 
 .photography-gallery__modal-image {
   display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100svh - 6rem);
+  object-fit: contain;
   filter: saturate(0.96) contrast(1);
 }
 
@@ -646,6 +722,7 @@ export default {
 
 .photography-gallery__series {
   width: max-content;
+  max-width: calc(100vw - 2rem);
   scrollbar-width: none;
 }
 
@@ -661,9 +738,6 @@ export default {
   border: 1px solid transparent;
   background: transparent;
   opacity: 0.48;
-  transition:
-    opacity 160ms ease,
-    border-color 160ms ease;
 }
 
 .photography-gallery__series-thumb:hover,
@@ -678,13 +752,6 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.photography-gallery__modal-close {
-  right: 0;
-  left: 0;
-  width: max-content;
-  margin-inline: auto;
 }
 
 .photography-gallery__modal-arrow {
@@ -709,11 +776,20 @@ export default {
 }
 
 @media (min-width: 1024px) {
-  .photography-gallery__modal-close {
-    right: auto;
-    left: 1.25rem;
-    margin-inline: 0;
+  .photography-gallery__modal-image-button {
+    width: min(calc(100vw - 8rem), 76rem);
+    max-height: calc(100svh - 4rem);
   }
+
+  .photography-gallery__modal-image {
+    max-height: calc(100svh - 4rem);
+  }
+
+  .photography-gallery__modal--with-series .photography-gallery__modal-image-button,
+  .photography-gallery__modal--with-series .photography-gallery__modal-image {
+    max-height: calc(100svh - 8rem);
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -728,9 +804,8 @@ export default {
     cursor: default;
   }
 
-  .photography-gallery__thumb:hover,
-  .photography-gallery__thumb:focus-visible {
-    transform: none;
+  .photography-gallery__item--portrait .photography-gallery__thumb {
+    width: min(100%, 22rem);
   }
 
   .photography-gallery__thumb:hover img,
@@ -738,18 +813,18 @@ export default {
     filter: saturate(0.92) contrast(0.98);
   }
 
-  .photography-gallery__caption span span,
-  .photography-gallery__caption span span:last-child {
-    opacity: 1;
-  }
-
-  .photography-gallery__caption .absolute {
-    display: none;
-  }
-
   .photography-gallery__modal-arrow {
-    bottom: 5rem;
+    bottom: 1.25rem;
     top: auto;
+  }
+
+  .photography-gallery__modal--with-series .photography-gallery__modal-image-button,
+  .photography-gallery__modal--with-series .photography-gallery__modal-image {
+    max-height: calc(100svh - 13rem);
+  }
+
+  .photography-gallery__series {
+    bottom: 5.75rem;
   }
 }
 </style>

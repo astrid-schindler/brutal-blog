@@ -35,7 +35,7 @@
         </figure>
       </section>
 
-      <router-link class="project-detail__back" to="/blog">
+      <router-link class="project-detail__back" to="/projects">
         Back to blog
       </router-link>
     </template>

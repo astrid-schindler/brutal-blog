@@ -1,4 +1,4 @@
-# Brutal Blog
+# Arlowe Photography Portfolio
 
 **Language / Sprache:** [Deutsch](#deutsch) | [English](#english)
 
@@ -6,7 +6,7 @@
 
 ## Deutsch
 
-Brutal Blog ist ein Vue-3-Portfolio mit Blog, Photography Gallery, About-, Contact-, Services-, Login- und Video-Route. Die Seite ist als reduzierte, bildstarke Portfolio-Erfahrung aufgebaut: wenig externes CSS, Tailwind-Utilities in den Komponenten, zentrale Design-Tokens in `src/index.css` und `tailwind.config.js`.
+Arlowe Photography Portfolio ist ein Vue-3-Portfolio mit Projects-Übersicht, Photography Gallery, About-, Contact-, Services-, Login- und Video-Route. Die Seite ist als reduzierte, bildstarke Portfolio-Erfahrung aufgebaut: wenig externes CSS, Tailwind-Utilities in den Komponenten, zentrale Design-Tokens in `src/index.css` und `tailwind.config.js`.
 
 Code, Konzept und Projektverantwortung: **Astrid Schindler**.
 
@@ -16,11 +16,11 @@ Die aktuelle Demo-Version ist auf Surge veröffentlicht:
 
 **[https://arlowe-santoro.surge.sh/](https://arlowe-santoro.surge.sh/)**
 
-Teile dieser Seite wurden mit Unterstützung von OpenAI Codex umgesetzt. Codex wurde unter anderem für Code-Aufräumarbeiten, Tailwind-Strukturierung, lokale Scripts, Blog-/Galerie-Reparaturen, Tests und README-Dokumentation eingesetzt. Gestaltung, Inhalte, Bildauswahl und finale Entscheidungen bleiben projektspezifisch.
+Teile dieser Seite wurden mit Unterstützung von OpenAI Codex umgesetzt. Codex wurde unter anderem für Code-Aufräumarbeiten, Tailwind-Strukturierung, lokale Scripts, Projects-/Galerie-Reparaturen, Tests und README-Dokumentation eingesetzt. Gestaltung, Inhalte, Bildauswahl und finale Entscheidungen bleiben projektspezifisch.
 
 ### Umsetzung
 
-Händisch programmiert und kuratiert wurden die grundlegende Projektidee, die Seitenstruktur, das visuelle Konzept, die inhaltliche Ausrichtung, die Komponentenarchitektur und die finale Auswahl der Bild- und Textinhalte. Dazu gehören insbesondere Routing, Seitenaufbau, Navigation, Hero-Bereich, About-/Contact-/Service-Seiten, Blogstruktur, Galerie-Konzept, manuelle Bildauswahl, UI-Texte und gestalterische Entscheidungen.
+Händisch programmiert und kuratiert wurden die grundlegende Projektidee, die Seitenstruktur, das visuelle Konzept, die inhaltliche Ausrichtung, die Komponentenarchitektur und die finale Auswahl der Bild- und Textinhalte. Dazu gehören insbesondere Routing, Seitenaufbau, Navigation, Hero-Bereich, About-/Contact-/Service-Seiten, Projects-Struktur, Galerie-Konzept, manuelle Bildauswahl, UI-Texte und gestalterische Entscheidungen.
 
 Mit Codex-Unterstützung wurden Teile des bestehenden Codes überarbeitet, repariert und dokumentiert. Dazu zählen die Vereinheitlichung der Galerie-Dateinamen, das Wiederherstellen und Verdrahten von Session-Bildern, die Tailwind-Aufräumung, lokale Dev-/GraphQL-Scripts, Testläufe, kleinere Bugfixes und diese technische README.
 
@@ -32,7 +32,7 @@ Mit Codex-Unterstützung wurden Teile des bestehenden Codes überarbeitet, repar
 - Tailwind CSS 3 mit globalen Tokens und Utility-Klassen
 - Font Awesome für UI-Icons
 - Open-Meteo API für Wetterdaten
-- GraphQL 15 für den optionalen lokalen Blog-API-Server
+- GraphQL 15 für den optionalen lokalen Projects-API-Server
 - Cypress für End-to-End-Tests
 - ESLint für Vue- und JavaScript-Prüfung
 
@@ -47,8 +47,8 @@ Voraussetzungen:
 Repository klonen und Abhängigkeiten installieren:
 
 ```bash
-git clone git@github.com:astrid-schindler/brutal-blog.git
-cd brutal-blog
+git clone git@github.com:astrid-schindler/arlowe-portfolio.git
+cd arlowe-portfolio
 npm install
 ```
 
@@ -84,12 +84,12 @@ npm run serve
 ### Projektstruktur
 
 ```text
-brutal-blog/
+arlowe-portfolio/
 ├── public/                 # Favicons, HTML-Einstiegspunkt
 ├── scripts/                # Dev- und GraphQL-Scripts
 ├── src/
 │   ├── components/         # Atoms, Molecules, Organisms, Pages, Templates
-│   ├── data/               # Lokale Blogdaten
+│   ├── data/               # Lokale Projectdaten
 │   ├── functions/          # Kleine UI-Helfer
 │   ├── router/             # Vue-Router-Konfiguration
 │   ├── App.vue             # App-Shell
@@ -107,29 +107,29 @@ Die Routen liegen in `src/router/index.js`:
 
 - `/` Startseite
 - `/photography` Photography-Galerie
-- `/blog` Blog- und Projektübersicht
-- `/projects` Redirect auf `/blog`
-- `/blogpost/:id` Detailseite für einzelne Blogposts
+- `/projects` Projects-Übersicht
+- `/blog` Redirect auf `/projects`
+- `/blogpost/:id` Detailseite für einzelne Projects
 - `/about` About-Seite
 - `/contact` Kontaktseite
 - `/leistungen` Services-Seite
 - `/video-call` Video-Seite
 - `/login` Login-Seite
 
-`vue.config.js` aktiviert `historyApiFallback`, damit direkte Aufrufe wie `/blog` oder `/blogpost/1` im Dev-Server auf `index.html` zurückfallen.
+`vue.config.js` aktiviert `historyApiFallback`, damit direkte Aufrufe wie `/projects`, `/blog` oder `/blogpost/1` im Dev-Server auf `index.html` zurückfallen.
 
-### Blog-Logik
+### Projects-Logik
 
-Die Blogseiten heißen historisch noch `BlogOverview_GraphQL.vue` und `BlogEntry_GraphQL.vue`, nutzen aktuell aber lokale Daten:
+Die Projects-Seiten heißen historisch noch `BlogOverview_GraphQL.vue` und `BlogEntry_GraphQL.vue`, nutzen aktuell aber lokale Daten:
 
-- `src/data/blogPreviews.js` für die Blogübersicht
+- `src/data/blogPreviews.js` für die Projects-Übersicht
 - `src/data/blogPostDetails.js` für Detailseiten und Bildserien
 
-Die Detaildaten werden per dynamischem Import geladen, wodurch beim Build ein eigener Chunk für Blogdetails entsteht. Posts mit `published: false` werden ausgeblendet.
+Die Detaildaten werden per dynamischem Import geladen, wodurch beim Build ein eigener Chunk für Project-Details entsteht. Einträge mit `published: false` werden ausgeblendet.
 
 ### Optionaler GraphQL-Server
 
-Der lokale GraphQL-Server in `scripts/graphql-server.js` stellt dieselben Session-Blogdaten als einfache API bereit. Er ist aktuell optional und nicht die primäre Datenquelle der Vue-Blogseiten.
+Der lokale GraphQL-Server in `scripts/graphql-server.js` stellt dieselben Session-/Project-Daten als einfache API bereit. Er ist aktuell optional und nicht die primäre Datenquelle der Vue-Seiten.
 
 Endpoint:
 
@@ -180,7 +180,7 @@ Die Bilder sind auf `photo_XXX.jpg` normalisiert. Die Galerie nutzt `require.con
 Wichtige Ordner:
 
 - `PhotographyGallery/photo_001.jpg` bis `photo_093.jpg` als Hauptgalerie
-- `PhotographyGallery/session-*` für Blog- und Session-Bilder
+- `PhotographyGallery/session-*` für Project- und Session-Bilder
 - `PhotographyGallery/retro-*` für angehängte Retro-Serien
 - `PhotographyGallery/aussortiert` als aussortierte, aber erhaltene Bildauswahl
 
@@ -280,7 +280,7 @@ Die URL muss zum tatsächlich laufenden Vue-Dev-Server passen.
 npm run build
 ```
 
-Das Ergebnis liegt in `dist/`. Bei Deployment auf statischem Hosting muss der Server für Vue Router im History-Modus konfiguriert sein: direkte Pfade wie `/blog`, `/about` oder `/blogpost/1` müssen auf `index.html` zurückfallen.
+Das Ergebnis liegt in `dist/`. Bei Deployment auf statischem Hosting muss der Server für Vue Router im History-Modus konfiguriert sein: direkte Pfade wie `/projects`, `/about` oder `/blogpost/1` müssen auf `index.html` zurückfallen.
 
 Der Build kann wegen der vielen großen Galerie-Bilder Asset-Size-Warnungen ausgeben. Das ist kein Build-Fehler, sondern ein Hinweis auf mögliche Performance-Optimierung.
 
@@ -289,7 +289,7 @@ Der Build kann wegen der vielen großen Galerie-Bilder Asset-Size-Warnungen ausg
 Remote:
 
 ```text
-git@github.com:astrid-schindler/brutal-blog.git
+git@github.com:astrid-schindler/arlowe-portfolio.git
 ```
 
 Workflow:
@@ -298,7 +298,7 @@ Workflow:
 git status
 git add .
 git commit -m "Describe your change"
-git push origin master
+git push origin dev
 ```
 
 Temporäre Arbeitsdaten wie `tmp/`, `node_modules/` und `dist/` gehören nicht in den normalen Commit.
@@ -307,7 +307,7 @@ Temporäre Arbeitsdaten wie `tmp/`, `node_modules/` und `dist/` gehören nicht i
 
 ## English
 
-Brutal Blog is a Vue 3 portfolio with a blog, photography gallery, about, contact, services, login, and video route. The site is designed as a reduced, image-driven portfolio experience: minimal external CSS, Tailwind utilities inside Vue components, and centralized design tokens in `src/index.css` and `tailwind.config.js`.
+Arlowe Photography Portfolio is a Vue 3 portfolio with a projects overview, photography gallery, about, contact, services, login, and video route. The site is designed as a reduced, image-driven portfolio experience: minimal external CSS, Tailwind utilities inside Vue components, and centralized design tokens in `src/index.css` and `tailwind.config.js`.
 
 Code, concept, and project ownership: **Astrid Schindler**.
 
@@ -317,11 +317,11 @@ The current demo version is published on Surge:
 
 **[https://arlowe-santoro.surge.sh/](https://arlowe-santoro.surge.sh/)**
 
-Parts of this site were implemented with support from OpenAI Codex. Codex was used for code cleanup, Tailwind restructuring, local scripts, blog and gallery repairs, test runs, and README documentation. The visual direction, content, image selection, and final project decisions remain project-specific.
+Parts of this site were implemented with support from OpenAI Codex. Codex was used for code cleanup, Tailwind restructuring, local scripts, projects and gallery repairs, test runs, and README documentation. The visual direction, content, image selection, and final project decisions remain project-specific.
 
 ### Implementation
 
-The core project idea, page structure, visual concept, content direction, component architecture, and final image and text selection were programmed and curated manually. This includes routing, page composition, navigation, hero area, about/contact/services pages, blog structure, gallery concept, manual image selection, UI copy, and design decisions.
+The core project idea, page structure, visual concept, content direction, component architecture, and final image and text selection were programmed and curated manually. This includes routing, page composition, navigation, hero area, about/contact/services pages, projects structure, gallery concept, manual image selection, UI copy, and design decisions.
 
 With Codex support, parts of the existing codebase were revised, repaired, and documented. This includes the normalized gallery file names, restored and wired session images, Tailwind cleanup, local dev and GraphQL scripts, test runs, smaller bug fixes, and this technical README.
 
@@ -333,7 +333,7 @@ With Codex support, parts of the existing codebase were revised, repaired, and d
 - Tailwind CSS 3 with global tokens and utility classes
 - Font Awesome for UI icons
 - Open-Meteo API for weather data
-- GraphQL 15 for the optional local blog API server
+- GraphQL 15 for the optional local projects API server
 - Cypress for end-to-end tests
 - ESLint for Vue and JavaScript checks
 
@@ -348,8 +348,8 @@ Requirements:
 Clone the repository and install dependencies:
 
 ```bash
-git clone git@github.com:astrid-schindler/brutal-blog.git
-cd brutal-blog
+git clone git@github.com:astrid-schindler/arlowe-portfolio.git
+cd arlowe-portfolio
 npm install
 ```
 
@@ -385,12 +385,12 @@ npm run serve
 ### Project Structure
 
 ```text
-brutal-blog/
+arlowe-portfolio/
 ├── public/                 # Favicons, HTML entry point
 ├── scripts/                # Dev and GraphQL scripts
 ├── src/
 │   ├── components/         # Atoms, Molecules, Organisms, Pages, Templates
-│   ├── data/               # Local blog data
+│   ├── data/               # Local project data
 │   ├── functions/          # Small UI helpers
 │   ├── router/             # Vue Router configuration
 │   ├── App.vue             # App shell
@@ -408,29 +408,29 @@ Routes are defined in `src/router/index.js`:
 
 - `/` home page
 - `/photography` photography gallery
-- `/blog` blog and project overview
-- `/projects` redirect to `/blog`
-- `/blogpost/:id` detail page for individual blog posts
+- `/projects` projects overview
+- `/blog` redirect to `/projects`
+- `/blogpost/:id` detail page for individual projects
 - `/about` about page
 - `/contact` contact page
 - `/leistungen` services page
 - `/video-call` video page
 - `/login` login page
 
-`vue.config.js` enables `historyApiFallback`, so direct requests such as `/blog` or `/blogpost/1` fall back to `index.html` in the dev server.
+`vue.config.js` enables `historyApiFallback`, so direct requests such as `/projects`, `/blog`, or `/blogpost/1` fall back to `index.html` in the dev server.
 
-### Blog Logic
+### Projects Logic
 
-The blog pages are still historically named `BlogOverview_GraphQL.vue` and `BlogEntry_GraphQL.vue`, but currently use local data:
+The projects pages are still historically named `BlogOverview_GraphQL.vue` and `BlogEntry_GraphQL.vue`, but currently use local data:
 
-- `src/data/blogPreviews.js` for the blog overview
+- `src/data/blogPreviews.js` for the projects overview
 - `src/data/blogPostDetails.js` for detail pages and image series
 
-The detail data is loaded through a dynamic import, which creates a separate blog details chunk during the build. Posts with `published: false` are hidden.
+The detail data is loaded through a dynamic import, which creates a separate project details chunk during the build. Entries with `published: false` are hidden.
 
 ### Optional GraphQL Server
 
-The local GraphQL server in `scripts/graphql-server.js` exposes the same session blog data through a simple API. It is currently optional and not the primary data source for the Vue blog pages.
+The local GraphQL server in `scripts/graphql-server.js` exposes the same session/project data through a simple API. It is currently optional and not the primary data source for the Vue pages.
 
 Endpoint:
 
@@ -481,7 +481,7 @@ Images are normalized to `photo_XXX.jpg`. The gallery uses `require.context` so 
 Important folders:
 
 - `PhotographyGallery/photo_001.jpg` through `photo_093.jpg` as the main gallery
-- `PhotographyGallery/session-*` for blog and session images
+- `PhotographyGallery/session-*` for project and session images
 - `PhotographyGallery/retro-*` for attached retro series
 - `PhotographyGallery/aussortiert` as a preserved outtake selection
 
@@ -581,7 +581,7 @@ The URL must match the currently running Vue dev server.
 npm run build
 ```
 
-The result is written to `dist/`. For static hosting, the server must be configured for Vue Router history mode: direct paths like `/blog`, `/about`, or `/blogpost/1` must fall back to `index.html`.
+The result is written to `dist/`. For static hosting, the server must be configured for Vue Router history mode: direct paths like `/projects`, `/about`, or `/blogpost/1` must fall back to `index.html`.
 
 The build can show asset-size warnings because the gallery contains many large images. These warnings are not build errors, but point to possible performance optimization.
 
@@ -590,7 +590,7 @@ The build can show asset-size warnings because the gallery contains many large i
 Remote:
 
 ```text
-git@github.com:astrid-schindler/brutal-blog.git
+git@github.com:astrid-schindler/arlowe-portfolio.git
 ```
 
 Workflow:
@@ -599,7 +599,7 @@ Workflow:
 git status
 git add .
 git commit -m "Describe your change"
-git push origin master
+git push origin dev
 ```
 
 Temporary working data such as `tmp/`, `node_modules/`, and `dist/` should not be part of normal commits.
