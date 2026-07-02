@@ -4,7 +4,7 @@
     :class="{'hero-tone': isHeroNavigation}"
   >
     <nav class="pointer-events-auto fixed left-[clamp(1rem,3vw,2rem)] right-[clamp(1rem,3vw,2rem)] top-[clamp(1rem,3vw,1.5rem)] z-50 grid grid-cols-12 items-start gap-x-[var(--layout-gap)] p-0 max-lg:grid-cols-8 max-md:grid-cols-4 max-md:gap-y-2 max-[480px]:grid-cols-[auto_minmax(0,1fr)]">
-      <span class="col-span-2 inline-flex items-center px-0 py-0 font-mono text-xs font-normal lowercase leading-none max-md:col-span-1 max-md:text-[0.68rem]">
+      <span class="minimal-navigation__brand col-span-2 inline-flex items-center px-0 py-0 font-mono text-xs font-normal lowercase leading-none max-md:col-span-1 max-md:text-[0.68rem]">
         arlowe santoro
       </span>
       <div class="minimal-navigation__actions col-start-3 col-end-[-1] flex items-start justify-end gap-x-4 gap-y-1 max-md:col-start-2">
@@ -15,7 +15,7 @@
           aria-controls="site-navigation-links"
           @click="toggleMenu"
         >
-          {{ isMenuOpen ? "Close" : "Menu" }}
+          {{ isMenuOpen ? "close" : "menu" }}
         </button>
         <div
           id="site-navigation-links"
@@ -29,14 +29,14 @@
             :aria-label="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
             @click="toggleDarkMode"
           >
-            {{ isDarkMode ? "Light mode" : "Dark mode" }}
+            {{ isDarkMode ? "light mode" : "dark mode" }}
           </button>
         </div>
         <button
           type="button"
           class="minimal-navigation__theme-button minimal-navigation__theme-button--desktop grid h-4 w-4 flex-none place-items-center p-0 text-[0.72rem] leading-none [&_svg]:h-[0.78rem] [&_svg]:w-[0.78rem]"
           :aria-label="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
-          :title="isDarkMode ? 'Light mode' : 'Dark mode'"
+          :title="isDarkMode ? 'light mode' : 'dark mode'"
           @click="toggleDarkMode"
         >
           <font-awesome-icon :icon="isDarkMode ? ['fas', 'sun'] : ['fas', 'moon']" aria-hidden="true" />
@@ -191,7 +191,7 @@ export default {
   font-size: 0.68rem;
   font-weight: 300;
   line-height: 1;
-  text-align: right;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
@@ -205,6 +205,12 @@ export default {
     justify-content: flex-end;
   }
 
+  .minimal-navigation__brand,
+  .minimal-navigation__menu-button {
+    position: relative;
+    z-index: 2;
+  }
+
   .minimal-navigation__menu-button {
     display: inline-flex;
   }
@@ -214,16 +220,18 @@ export default {
   }
 
   .minimal-navigation__menu {
-    position: absolute;
-    top: calc(100% + 0.75rem);
-    right: 0;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
     display: none !important;
-    width: max-content;
-    max-width: min(14rem, calc(100vw - 2rem));
-    justify-items: end;
-    row-gap: 0.55rem;
-    padding: 0;
-    text-align: right;
+    width: 100vw;
+    min-height: 100dvh;
+    align-content: center;
+    justify-items: start;
+    row-gap: 1.25rem;
+    padding: clamp(5.5rem, 16vh, 8rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 8vh, 4rem);
+    background-color: var(--page-background);
+    text-align: left;
   }
 
   .minimal-navigation__menu--open {
@@ -232,16 +240,20 @@ export default {
 
   .minimal-navigation__menu :deep(.navigation-links) {
     display: grid;
-    justify-items: end;
-    row-gap: 0.55rem;
+    justify-items: start;
+    row-gap: clamp(0.9rem, 3.4vh, 1.35rem);
   }
 
   .minimal-navigation__theme-button--mobile {
     display: inline-flex;
+    font-size: 0.82rem;
+    line-height: 1.35;
   }
 
   .minimal-navigation__links :deep(a) {
     width: max-content;
+    font-size: clamp(1.15rem, 7vw, 2.1rem);
+    line-height: 1.15;
   }
 }
 </style>
